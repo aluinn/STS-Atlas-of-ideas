@@ -104,6 +104,9 @@
   --chart-ink-faint: rgba(45, 59, 82, 0.22);
   --chart-route-primary: #8a3b3f;
   --chart-route-accent: #93702c;
+  --chart-mountain-light: #c9a665;
+  --chart-mountain-shadow: #8a6a3a;
+  --chart-mountain-snow: #f3e8cc;
   --chart-marker-fill: #f1e3bd;
   --chart-marker-ink: #2d3b52;
   --chart-marker-selected: #8a3b3f;

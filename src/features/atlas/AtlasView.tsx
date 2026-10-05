@@ -13,8 +13,8 @@ import {
   type MarkerCluster,
 } from '../../utils/geo'
 import { MarkerIcon } from '../../components/MarkerIcon'
-import { MapDefs, ForestGlyph, CompassRose } from './MapGlyphs'
-import { forestRegions } from '../../utils/mapDecorations'
+import { MapDefs, MountainGlyph, ForestGlyph, CompassRose } from './MapGlyphs'
+import { mountainRanges, forestRegions } from '../../utils/mapDecorations'
 import styles from './AtlasView.module.css'
 
 interface AtlasViewProps {
@@ -97,6 +97,15 @@ export function AtlasView({
     () => pathGenerator(landFeature as never) ?? '',
     [pathGenerator, landFeature],
   )
+
+  const mountainPoints = useMemo(() => {
+    const out: GlyphPoint[] = []
+    for (const m of mountainRanges) {
+      const p = projection([m.longitude, m.latitude])
+      if (p) out.push({ x: p[0], y: p[1], scale: m.scale, rotation: m.rotation })
+    }
+    return out
+  }, [projection])
 
   const forestPoints = useMemo(() => {
     const out: GlyphPoint[] = []
@@ -248,6 +257,15 @@ export function AtlasView({
               className={styles.seaTexture}
             />
             <path className={styles.land} d={landPath} />
+            {mountainPoints.map((m, i) => (
+              <MountainGlyph
+                key={`mtn-${i}`}
+                x={m.x}
+                y={m.y}
+                scale={m.scale}
+                rotation={m.rotation}
+              />
+            ))}
             {forestPoints.map((f, i) => (
               <ForestGlyph
                 key={`forest-${i}`}

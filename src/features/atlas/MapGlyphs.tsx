@@ -75,6 +75,59 @@ interface GlyphProps {
   rotation?: number
 }
 
+interface PeakSpec {
+  dx: number
+  h: number
+  w: number
+  muted?: boolean
+}
+
+/** One triangular peak: a lit flank, a shadowed flank, and a snow cap — the
+ * standard two-tone silhouette that reads unambiguously as "mountain". */
+function Peak({ dx, h, w, muted }: PeakSpec) {
+  const apexY = -h
+  const capH = h * 0.32
+  const capW = w * 0.22
+  return (
+    <g opacity={muted ? 0.55 : 1}>
+      <path
+        d={`M${dx - w / 2},0 L${dx},${apexY} L${dx},0 Z`}
+        fill="var(--chart-mountain-light)"
+        stroke="var(--chart-ink)"
+        strokeWidth="0.5"
+        strokeLinejoin="round"
+      />
+      <path
+        d={`M${dx},0 L${dx},${apexY} L${dx + w / 2},0 Z`}
+        fill="var(--chart-mountain-shadow)"
+        stroke="var(--chart-ink)"
+        strokeWidth="0.5"
+        strokeLinejoin="round"
+      />
+      <path
+        d={`M${dx - capW},${apexY + capH} L${dx},${apexY} L${dx + capW},${apexY + capH} L${dx + capW * 0.45},${apexY + capH * 0.8} L${dx},${apexY + capH * 1.35} L${dx - capW * 0.45},${apexY + capH * 0.8} Z`}
+        fill="var(--chart-mountain-snow)"
+        stroke="var(--chart-ink)"
+        strokeWidth="0.4"
+        strokeLinejoin="round"
+      />
+    </g>
+  )
+}
+
+/** A small range of overlapping peaks — a muted, smaller peak glimpsed
+ * behind two larger ones in front, each with a lit/shadowed flank and a
+ * snow cap, in the manner of a classic cartographic mountain symbol. */
+export function MountainGlyph({ x, y, scale = 1, rotation = 0 }: GlyphProps) {
+  return (
+    <g transform={`translate(${x},${y}) rotate(${rotation}) scale(${scale})`}>
+      <Peak dx={-7} h={9.5} w={11} muted />
+      <Peak dx={2.5} h={15} w={14} />
+      <Peak dx={11.5} h={11} w={12} />
+    </g>
+  )
+}
+
 /** A small cluster of scalloped canopy bumps, standing in for a forest. */
 export function ForestGlyph({ x, y, scale = 1, rotation = 0 }: GlyphProps) {
   return (
