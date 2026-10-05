@@ -51,6 +51,12 @@
   stroke-width: 1;
 }
 
+.mountainGlyph {
+  fill: var(--chart-ink);
+  fill-opacity: 0.88;
+  pointer-events: none;
+}
+
 .forestGlyph {
   fill: var(--chart-ink);
   fill-opacity: 0.3;
