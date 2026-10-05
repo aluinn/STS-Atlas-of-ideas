@@ -100,6 +100,7 @@ export function DetailPanel({
           {entry.theoryStatus && (
             <span className={styles.chip}>status: {entry.theoryStatus.replace(/-/g, ' ')}</span>
           )}
+          {entry.scale && <span className={styles.chip}>scale: {entry.scale}</span>}
         </div>
 
         {entry.contentStatus === 'sourceNeeded' && (

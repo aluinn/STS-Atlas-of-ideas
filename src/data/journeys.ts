@@ -525,4 +525,283 @@ export const journeys: Journey[] = [
       },
     ],
   },
+  {
+    id: 'knowledge-to-practice',
+    slug: 'knowledge-to-practice',
+    title: 'From Scientific Knowledge to Scientific Practice',
+    summary:
+      'A shift in how science studies itself: from treating knowledge as a body of belief to treating it as a temporal, material, skilled, and often improvised practice.',
+    themes: ['scientific-practice'],
+    stops: [
+      {
+        entryId: 'sociology-of-scientific-knowledge',
+        caption:
+          'A new sociology insists even the content of belief, not just scientific conduct, is explicable.',
+      },
+      {
+        entryId: 'edinburgh-bath-traditions',
+        caption:
+          'Two schools disagree about whether broad social interests or close negotiation explains belief.',
+      },
+      {
+        entryId: 'pickering-practice-turn',
+        caption: 'Attention shifts from what scientists believe to what scientists actually do.',
+      },
+      {
+        entryId: 'laboratory-ethnography',
+        caption: 'An anthropologist in the lab watches facts get made, not just reported.',
+      },
+      {
+        entryId: 'knorr-cetina-epistemic-cultures',
+        caption: 'Different sciences, it turns out, make knowledge in genuinely different ways.',
+      },
+      {
+        entryId: 'actor-network-theory',
+        caption:
+          'And finally, networks of humans and nonhumans, described with the same vocabulary.',
+      },
+    ],
+  },
+  {
+    id: 'who-counts-as-expert',
+    slug: 'who-counts-as-expert',
+    title: 'Who Gets to Count as an Expert?',
+    summary:
+      'From an idealised institutional ethos to the lived, contested reality of whose knowledge counts — and whose credit gets recognised.',
+    themes: ['expertise-and-activism', 'society-and-power'],
+    stops: [
+      {
+        entryId: 'merton-norms',
+        caption: 'A sociologist proposes the ethos that is supposed to make science trustworthy.',
+      },
+      {
+        entryId: 'gieryn-boundary-work',
+        caption:
+          'But the boundary around legitimate science is drawn strategically, not simply found.',
+      },
+      {
+        entryId: 'brian-wynne-cumbrian-sheep-farmers',
+        caption:
+          "Farmers' practical knowledge proves more reliable than official models — and is dismissed anyway.",
+      },
+      {
+        entryId: 'aids-activism-treatment-expertise',
+        caption:
+          'Patients without credentials acquire real expertise and change how research gets designed.',
+      },
+      {
+        entryId: 'franklin-wu-credit-and-exclusion',
+        caption:
+          'And two women whose experimental work was essential go under-credited all the same.',
+      },
+    ],
+  },
+  {
+    id: 'can-technology-be-political',
+    slug: 'can-technology-be-political',
+    title: 'Can Technology Be Political?',
+    summary:
+      'From a famous theory, through a famous (and disputed) example, to a live case of a controversial technology under review.',
+    themes: ['technology-and-politics'],
+    stops: [
+      {
+        entryId: 'social-construction-of-technology',
+        caption:
+          "A technology's design is shaped by competing social groups, not efficiency alone.",
+      },
+      {
+        entryId: 'winner-artifacts-have-politics',
+        caption: 'Winner argues some artefacts actively embody political arrangements.',
+      },
+      {
+        entryId: 'robert-moses-bridges',
+        caption: 'His most famous example turns out to be more disputed than its fame suggests.',
+      },
+      {
+        entryId: 'agricultural-mechanization-labour-politics',
+        caption:
+          'Two mechanisation cases show labour politics embedded in "efficient" technical choices.',
+      },
+      {
+        entryId: 'collingridge-dilemma',
+        caption: 'Early control is easy but blind; late control is informed but often too late.',
+      },
+      {
+        entryId: 'spice-geoengineering-project',
+        caption:
+          'A real project tests whether "responsible innovation" can hold up under commercial pressure.',
+      },
+    ],
+  },
+  {
+    id: 'discovery-to-asset',
+    slug: 'discovery-to-asset',
+    title: 'From Discovery to Asset',
+    summary:
+      'How knowledge becomes property, and property becomes a source of continuing income and control.',
+    themes: ['assetisation'],
+    stops: [
+      {
+        entryId: 'bourdieu-forms-of-capital',
+        caption:
+          'A framework for how advantage accumulates and converts between economic, cultural, and social forms.',
+      },
+      {
+        entryId: 'assetisation-technoscientific-rent',
+        caption: 'A thing or resource is made into a controlled asset, generating continuing rent.',
+      },
+      {
+        entryId: 'human-genome-project-bermuda-principles',
+        caption:
+          'An unusually radical commitment to openness, made partly to pre-empt that very logic.',
+      },
+      {
+        entryId: 'open-access-and-inequality',
+        caption: 'Even "open" publishing has its own, differently distributed costs.',
+      },
+      {
+        entryId: 'triple-helix-model',
+        caption:
+          'And universities themselves start acting entrepreneurially, blurring public knowledge and private gain.',
+      },
+    ],
+  },
+  {
+    id: 'is-open-science-open',
+    slug: 'is-open-science-open',
+    title: 'Is Open Science Really Open?',
+    summary:
+      'From a secret anagram to a citizen-science platform — a history of priority, publication, and who actually gets to participate.',
+    themes: ['open-science'],
+    stops: [
+      {
+        entryId: 'galileo-anagram-priority',
+        caption: 'Claiming priority while keeping the actual discovery secret.',
+      },
+      {
+        entryId: 'henry-oldenburg-philosophical-transactions',
+        caption:
+          'Publication offers an alternative: prove priority by publishing openly and promptly.',
+      },
+      {
+        entryId: 'human-genome-project-bermuda-principles',
+        caption:
+          "A radical twenty-four-hour data-release commitment, unusually fast even by today's standards.",
+      },
+      {
+        entryId: 'open-access-and-inequality',
+        caption: 'But paying to publish openly creates a new kind of unevenness.',
+      },
+      {
+        entryId: 'galaxy-zoo-citizen-science',
+        caption: 'And ordinary volunteers turn out to produce expert-grade scientific data.',
+      },
+    ],
+  },
+  {
+    id: 'gender-metaphor-representation',
+    slug: 'gender-metaphor-representation',
+    title: 'Gender, Metaphor, and Scientific Representation',
+    summary:
+      'How gendered language and exclusion have shaped both who gets to produce scientific knowledge and how that knowledge gets described.',
+    themes: ['gender-and-representation'],
+    stops: [
+      {
+        entryId: 'margaret-cavendish',
+        caption: 'A published natural philosopher, excluded from the institution she critiqued.',
+      },
+      {
+        entryId: 'maria-sibylla-merian',
+        caption: 'Rigorous fieldwork, pursued entirely outside university science.',
+      },
+      {
+        entryId: 'emily-martin-egg-and-sperm',
+        caption:
+          "Even cell biology's textbook language turns out to carry gendered cultural assumptions.",
+      },
+      {
+        entryId: 'feminist-epistemology-idea',
+        caption:
+          'A philosophical case that situated knowledge can make science more rigorous, not less.',
+      },
+      {
+        entryId: 'daston-galison-objectivity',
+        caption:
+          'And the standards for a trustworthy scientific image turn out to have a history too.',
+      },
+    ],
+  },
+  {
+    id: 'local-knowledge-global-science',
+    slug: 'local-knowledge-global-science',
+    title: 'Local Knowledge in a Global Scientific World',
+    summary:
+      'Technical knowledge that developed outside European institutions, and the uneven networks through which knowledge actually circulates.',
+    themes: ['global-knowledge-networks'],
+    stops: [
+      {
+        entryId: 'heterarchical-scientific-networks',
+        caption:
+          'Knowledge moves through many connected centres, not outward from one — but not evenly.',
+      },
+      {
+        entryId: 'west-african-ironsmithing',
+        caption:
+          'Sophisticated metallurgical knowledge, transmitted by apprenticeship rather than text.',
+      },
+      {
+        entryId: 'tuareg-salt-production-kawar',
+        caption:
+          'Technical and navigational knowledge distributed across a trans-Saharan trade network.',
+      },
+      {
+        entryId: 'cotton-cultivation-uganda',
+        caption:
+          'Colonial agricultural science reorganises, and partly overrides, existing local knowledge.',
+      },
+      {
+        entryId: 'mobile-money-east-africa',
+        caption: 'A homegrown digital innovation that matured in East Africa before anywhere else.',
+      },
+      {
+        entryId: 'trickle-down-science',
+        caption:
+          'And a critical question: does research directed by wealthy institutions automatically benefit everyone else?',
+      },
+    ],
+  },
+  {
+    id: 'governments-direct-innovation',
+    slug: 'governments-direct-innovation',
+    title: 'How Governments Try to Direct Innovation',
+    summary:
+      'Four competing models for how research funding should relate to real-world innovation — and why none of them is a simple, automatic pipeline.',
+    themes: ['innovation-policy'],
+    stops: [
+      {
+        entryId: 'linear-model-of-innovation',
+        caption:
+          'The postwar assumption: fund basic research, and useful applications will follow.',
+      },
+      {
+        entryId: 'mode-2-knowledge-production',
+        caption:
+          'A challenge: knowledge is increasingly produced in context, across many institutions at once.',
+      },
+      {
+        entryId: 'triple-helix-model',
+        caption: "Universities, industry, and government start taking on each other's roles.",
+      },
+      {
+        entryId: 'mission-oriented-innovation',
+        caption:
+          'A newer approach: let government actively direct investment toward chosen social goals.',
+      },
+      {
+        entryId: 'science-policy-ecology',
+        caption:
+          'And behind all of it, a fragmented ecology of brokers, each shaping whose evidence gets heard.',
+      },
+    ],
+  },
 ]

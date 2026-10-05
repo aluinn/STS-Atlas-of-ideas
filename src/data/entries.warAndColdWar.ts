@@ -244,7 +244,7 @@ export const warAndColdWarEntries: Entry[] = [
     summary:
       'Historian Derek de Solla Price\'s notion of "Big Science" describes the postwar pattern of enormous research projects defined by massive funding, large teams, expensive machinery, public visibility, and close ties to military priorities.',
     longDescription:
-      'From particle accelerators to space programs to oceanographic survey fleets, both the US and USSR organised vast swaths of research within this template during the Cold War, often justified publicly by scientific or civilian goals while serving strategic military interests as well. The approach produced genuine breakthroughs while also raising enduring concerns about whether military funding subtly steers which scientific questions get asked.',
+      'From particle accelerators to space programs to oceanographic survey fleets, both the US and USSR organised vast swaths of research within this template during the Cold War, often justified publicly by scientific or civilian goals while serving strategic military interests as well. The approach produced genuine breakthroughs while also raising enduring concerns about whether military funding subtly steers which scientific questions get asked. "Big Science" is not best understood as beginning from nothing in 1945: large-scale, state-organised research had real precedents (the Alexandria Museum, the Baghdad translation movement, the Royal Society), and critics at the time, notably Alvin Weinberg, argued the postwar version could be understood at once in terms of scale and funding, its large shared instruments, its industrial mode of production, its political structure linking universities, government, and the military, its large administrative workforces, and its public cultural symbolism — no single one of these fully captures what made it distinctive.',
     startYear: 1945,
     endYear: 1991,
     dateDisplay: '1945–1991',
@@ -275,7 +275,14 @@ export const warAndColdWarEntries: Entry[] = [
         type: 'secondary',
       },
     ],
-    relatedEntryIds: ['vannevar-bush', 'plate-tectonics', 'manhattan-project'],
+    relatedEntryIds: [
+      'vannevar-bush',
+      'plate-tectonics',
+      'manhattan-project',
+      'derek-de-solla-price',
+      'alvin-weinberg-big-science-critique',
+      'alexandria-library',
+    ],
     confidence: 'established',
     contentStatus: 'complete',
     isJourneyStop: true,

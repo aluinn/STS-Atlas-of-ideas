@@ -32,7 +32,15 @@ const RELATIONSHIP_LABELS: Record<RelationshipType, string> = {
   extracted: 'Extracted knowledge or resources',
   institutionalised: 'Institutionalised',
   'independently-developed': 'Independently developed',
+  commercialised: 'Commercialised',
+  regulated: 'Regulated',
+  'co-produced': 'Co-produced',
+  represented: 'Represented',
+  'materially-enabled': 'Materially enabled',
+  contested: 'Contested',
 }
+
+const BROKEN_LEGEND_TYPES = new Set<RelationshipType>(['replaced', 'criticised', 'contested'])
 
 export function Legend() {
   return (
@@ -51,7 +59,7 @@ export function Legend() {
           {(Object.keys(RELATIONSHIP_LABELS) as RelationshipType[]).map((type) => (
             <div className={styles.row} key={type}>
               <span
-                className={`${styles.lineSample} ${type === 'replaced' || type === 'criticised' ? styles.lineBroken : ''}`}
+                className={`${styles.lineSample} ${BROKEN_LEGEND_TYPES.has(type) ? styles.lineBroken : ''}`}
               />
               <span>{RELATIONSHIP_LABELS[type]}</span>
             </div>

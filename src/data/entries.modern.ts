@@ -726,7 +726,7 @@ export const modernEntries: Entry[] = [
     summary:
       'Belgian colonial geological and botanical surveys of the Congo Free State and later Belgian Congo mapped mineral and rubber resources with scientific rigor used to organise forced labour and extraction, including during the rubber atrocities under Leopold II.',
     longDescription:
-      'Expeditions trained in botany, geology, and tropical medicine produced genuinely useful scientific knowledge about Central African ecosystems and mineral deposits, knowledge that was simultaneously deployed to organise one of the most violent systems of forced extraction in modern colonial history. The case sharply poses the question of whether "extracting knowledge" and "extracting resources" can really be separated in colonial science.',
+      'Expeditions trained in botany, geology, and tropical medicine produced genuinely useful scientific knowledge about Central African ecosystems and mineral deposits, knowledge that was simultaneously deployed to organise one of the most violent systems of forced extraction in modern colonial history. Botanical surveys that mapped and classified wild rubber vines (Landolphia species) across the forest were used directly to set village extraction quotas during the Congo Free State\'s rubber terror of the 1890s–1900s, when failure to meet quotas was punished with mutilation and killing; the same botanical expertise later supported a shift toward cultivated plantation rubber once wild-vine stocks were depleted. The case sharply poses the question of whether "extracting knowledge" and "extracting resources" can really be separated in colonial science.',
     startYear: 1885,
     endYear: 1960,
     dateDisplay: '1885–1960',

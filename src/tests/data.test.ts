@@ -49,6 +49,12 @@ describe('data integrity', () => {
       'extracted',
       'institutionalised',
       'independently-developed',
+      'commercialised',
+      'regulated',
+      'co-produced',
+      'represented',
+      'materially-enabled',
+      'contested',
     ]
     for (const t of expected) {
       expect(types.has(t)).toBe(true)

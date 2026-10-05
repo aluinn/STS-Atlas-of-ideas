@@ -41,7 +41,7 @@ interface GlyphPoint {
   rotation?: number
 }
 
-const BROKEN_TYPES = new Set(['replaced', 'criticised'])
+const BROKEN_TYPES = new Set(['replaced', 'criticised', 'contested'])
 
 export function AtlasView({
   entries,

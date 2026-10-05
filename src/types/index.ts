@@ -66,6 +66,17 @@ export type RelationshipType =
   | 'extracted'
   | 'institutionalised'
   | 'independently-developed'
+  | 'commercialised'
+  | 'regulated'
+  | 'co-produced'
+  | 'represented'
+  | 'materially-enabled'
+  | 'contested'
+
+/** The social/physical scale a concept or case is best read at. Optional —
+ * most entries don't need one, but it helps place abstract sociological and
+ * policy concepts (which otherwise resist a single map coordinate). */
+export type EntryScale = 'body' | 'laboratory' | 'institution' | 'nation' | 'network' | 'globe'
 
 /** A short prompt inviting the visitor to reflect philosophically on an entry. */
 export interface PhilosophicalLens {
@@ -135,6 +146,11 @@ export interface Entry {
   /** Only for kind === 'idea' | 'discovery' entries that are theories/models. */
   theoryStatus?: TheoryStatus
   theoryStatusNote?: string
+
+  /** The scale a concept operates at — mainly for sociological/policy ideas
+   * that resist a single geographic pin (a theory about "networks" isn't
+   * really located anywhere; it's located at the network scale). */
+  scale?: EntryScale
 
   image?: string
   imageAlt?: string

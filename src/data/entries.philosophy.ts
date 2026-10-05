@@ -530,7 +530,12 @@ export const philosophyEntries: Entry[] = [
         type: 'primary',
       },
     ],
-    relatedEntryIds: ['bas-van-fraassen', 'galileo-telescope'],
+    relatedEntryIds: [
+      'bas-van-fraassen',
+      'galileo-telescope',
+      'pickering-practice-turn',
+      'laboratory-ethnography',
+    ],
     confidence: 'established',
     contentStatus: 'complete',
     isJourneyStop: true,

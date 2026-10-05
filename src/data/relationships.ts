@@ -760,4 +760,274 @@ export const relationships: Relationship[] = [
       "The Royal Society's early model of collective, published, peer-witnessed research influenced the wider wave of scientific societies founded across Europe afterward.",
     confidence: 'likely',
   },
+  {
+    id: 'r85',
+    sourceId: 'sociology-of-scientific-knowledge',
+    targetId: 'merton-norms',
+    type: 'challenged',
+    summary:
+      "SSK's strong programme challenged Merton's focus on institutional norms, arguing sociology should explain the content of belief itself, not just scientific conduct.",
+    confidence: 'established',
+  },
+  {
+    id: 'r86',
+    sourceId: 'pickering-practice-turn',
+    targetId: 'sociology-of-scientific-knowledge',
+    type: 'challenged',
+    summary:
+      "Pickering's practice turn shifted attention from the social causes of belief (SSK's focus) toward the material, temporal doing of scientific work.",
+    confidence: 'established',
+  },
+  {
+    id: 'r87',
+    sourceId: 'laboratory-ethnography',
+    targetId: 'actor-network-theory',
+    type: 'influenced',
+    summary:
+      "Latour and Woolgar's laboratory ethnography directly fed into Latour's subsequent development of Actor-Network Theory.",
+    confidence: 'established',
+  },
+  {
+    id: 'r88',
+    sourceId: 'actor-network-theory',
+    targetId: 'sociology-of-scientific-knowledge',
+    type: 'challenged',
+    summary:
+      "ANT's symmetry between human and nonhuman actors challenged SSK's explanations of scientific belief purely in terms of human social interests.",
+    confidence: 'likely',
+  },
+  {
+    id: 'r89',
+    sourceId: 'knorr-cetina-epistemic-cultures',
+    targetId: 'pickering-practice-turn',
+    type: 'supported',
+    summary:
+      "Knorr Cetina's comparative laboratory ethnography extended and reinforced Pickering's practice-centred approach to studying science.",
+    confidence: 'likely',
+  },
+  {
+    id: 'r90',
+    sourceId: 'sociology-of-scientific-knowledge',
+    targetId: 'edinburgh-bath-traditions',
+    type: 'influenced',
+    summary:
+      "SSK's strong programme directly shaped the Edinburgh and Bath traditions that developed and specified its approach through detailed case studies.",
+    confidence: 'established',
+  },
+  {
+    id: 'r91',
+    sourceId: 'bourdieu-forms-of-capital',
+    targetId: 'professionalisation-of-science',
+    type: 'influenced',
+    summary:
+      "Bourdieu's account of convertible forms of capital supplies much of the conceptual vocabulary later historians use to analyse how scientific professionalisation distributed advantage unevenly.",
+    confidence: 'likely',
+  },
+  {
+    id: 'r92',
+    sourceId: 'human-genome-project-bermuda-principles',
+    targetId: 'assetisation-technoscientific-rent',
+    type: 'contested',
+    summary:
+      "The Bermuda Principles' radical commitment to rapid open data release was explicitly designed to contest and pre-empt commercial patenting and rent extraction from the human genome.",
+    confidence: 'likely',
+  },
+  {
+    id: 'r93',
+    sourceId: 'derek-de-solla-price',
+    targetId: 'cold-war-big-science',
+    type: 'influenced',
+    summary:
+      'Price\'s quantitative study of science\'s exponential growth gave the concept of "Big Science" its first rigorous empirical grounding.',
+    confidence: 'established',
+  },
+  {
+    id: 'r94',
+    sourceId: 'alvin-weinberg-big-science-critique',
+    targetId: 'cold-war-big-science',
+    type: 'criticised',
+    summary:
+      'Weinberg warned from within that Big Science risked "journalitis," "moneyitis," and "administratitis" overtaking genuine scientific judgement.',
+    confidence: 'established',
+  },
+  {
+    id: 'r95',
+    sourceId: 'mode-2-knowledge-production',
+    targetId: 'linear-model-of-innovation',
+    type: 'challenged',
+    summary:
+      "Mode 2 knowledge production explicitly challenged the linear model's one-directional, discipline-bound picture of how research leads to innovation.",
+    confidence: 'established',
+  },
+  {
+    id: 'r96',
+    sourceId: 'mode-2-knowledge-production',
+    targetId: 'triple-helix-model',
+    type: 'influenced',
+    summary:
+      "Mode 2's emphasis on distributed, application-oriented knowledge production directly fed into the Triple Helix model of university-industry-government interaction.",
+    confidence: 'likely',
+  },
+  {
+    id: 'r97',
+    sourceId: 'mission-oriented-innovation',
+    targetId: 'linear-model-of-innovation',
+    type: 'challenged',
+    summary:
+      "Mission-oriented innovation policy explicitly rejects the linear model's separation of funding basic research from directing it toward social goals.",
+    confidence: 'likely',
+  },
+  {
+    id: 'r98',
+    sourceId: 'science-policy-ecology',
+    targetId: 'spice-geoengineering-project',
+    type: 'regulated',
+    summary:
+      "The UK's distributed science-policy ecology — research councils, review panels, and public-engagement bodies — formally regulated SPICE's progress through a staged review process.",
+    confidence: 'likely',
+  },
+  {
+    id: 'r99',
+    sourceId: 'heterarchical-scientific-networks',
+    targetId: 'trickle-down-science',
+    type: 'challenged',
+    summary:
+      'Describing global science as a heterarchical network of uneven but multi-directional exchange directly challenges the assumption that benefit only flows one way, downward from wealthy funders.',
+    confidence: 'likely',
+  },
+  {
+    id: 'r100',
+    sourceId: 'sociotechnical-imaginaries',
+    targetId: 'cold-war-big-science',
+    type: 'co-produced',
+    summary:
+      'Cold War Big Science and national imaginaries of prestige, security, and technological destiny were co-produced, each justifying and reinforcing the other.',
+    confidence: 'likely',
+  },
+  {
+    id: 'r101',
+    sourceId: 'henry-oldenburg-philosophical-transactions',
+    targetId: 'galileo-anagram-priority',
+    type: 'replaced',
+    summary:
+      "Oldenburg's model of prompt, dated publication gradually replaced anagram-style secret priority-claiming as the accepted way to establish who discovered something first.",
+    confidence: 'likely',
+  },
+  {
+    id: 'r102',
+    sourceId: 'scientific-societies',
+    targetId: 'henry-oldenburg-philosophical-transactions',
+    type: 'materially-enabled',
+    summary:
+      "The Royal Society's institutional infrastructure — correspondence networks, meeting records, fellows willing to referee reports — materially enabled Oldenburg's journal as a sustained operation.",
+    confidence: 'established',
+  },
+  {
+    id: 'r103',
+    sourceId: 'robert-moses-bridges',
+    targetId: 'winner-artifacts-have-politics',
+    type: 'contested',
+    summary:
+      'Historians, notably Bernward Joerges, contested the specific evidentiary basis of the Long Island bridges story Winner used as his central illustration.',
+    confidence: 'established',
+  },
+  {
+    id: 'r104',
+    sourceId: 'social-construction-of-technology',
+    targetId: 'winner-artifacts-have-politics',
+    type: 'challenged',
+    summary:
+      "SCOT scholars challenged Winner's claim that some technologies are inherently politically compatible with certain authority structures, arguing that compatibility is itself socially constructed.",
+    confidence: 'likely',
+  },
+  {
+    id: 'r105',
+    sourceId: 'winner-artifacts-have-politics',
+    targetId: 'agricultural-mechanization-labour-politics',
+    type: 'influenced',
+    summary:
+      "Winner's framework for how artefacts can embody political arrangements directly shaped later readings of agricultural mechanisation cases like McCormick's moulding machines and the tomato harvester.",
+    confidence: 'likely',
+  },
+  {
+    id: 'r106',
+    sourceId: 'collingridge-dilemma',
+    targetId: 'spice-geoengineering-project',
+    type: 'influenced',
+    summary:
+      "The Collingridge dilemma's logic of early, flexible intervention directly shaped the stage-gate review design built into the SPICE project.",
+    confidence: 'likely',
+  },
+  {
+    id: 'r107',
+    sourceId: 'brian-wynne-cumbrian-sheep-farmers',
+    targetId: 'hpv-vaccine-ireland-regret',
+    type: 'influenced',
+    summary:
+      "Wynne's argument that public distrust can reflect legitimate institutional experience, not just an information deficit, directly shapes later analyses of vaccine-confidence controversies like Ireland's HPV case.",
+    confidence: 'likely',
+  },
+  {
+    id: 'r108',
+    sourceId: 'franklin-wu-credit-and-exclusion',
+    targetId: 'bourdieu-forms-of-capital',
+    type: 'supported',
+    summary:
+      "The Franklin and Wu cases are frequently used to illustrate Bourdieu's point that symbolic and institutional capital, not contribution alone, governs who receives scientific credit.",
+    confidence: 'likely',
+  },
+  {
+    id: 'r109',
+    sourceId: 'hpv-vaccine-ireland-regret',
+    targetId: 'discourse-identity-subject-formation',
+    type: 'represented',
+    summary:
+      'Media testimony in the REGRET campaign represented affected families in emotionally powerful ways that shaped public identification with the controversy.',
+    confidence: 'likely',
+  },
+  {
+    id: 'r110',
+    sourceId: 'emily-martin-egg-and-sperm',
+    targetId: 'daston-galison-objectivity',
+    type: 'supported',
+    summary:
+      "Martin's case extends Daston and Galison's point that scientific representation is historically and culturally shaped into the specific terrain of gendered reproductive biology.",
+    confidence: 'likely',
+  },
+  {
+    id: 'r111',
+    sourceId: 'mobile-money-east-africa',
+    targetId: 'trickle-down-science',
+    type: 'challenged',
+    summary:
+      "Mobile money's East African origin and later study elsewhere directly challenges the assumption that transformative innovation flows outward from wealthy countries to poorer ones.",
+    confidence: 'likely',
+  },
+  {
+    id: 'r112',
+    sourceId: 'mobile-money-east-africa',
+    targetId: 'assetisation-technoscientific-rent',
+    type: 'commercialised',
+    summary:
+      'M-Pesa commercialised an informal practice of trading mobile airtime into a regulated, fee-generating financial-services product.',
+    confidence: 'likely',
+  },
+  {
+    id: 'r113',
+    sourceId: 'haraway-cyborg-making-kin',
+    targetId: 'actor-network-theory',
+    type: 'supported',
+    summary:
+      "Haraway's cyborg figure and ANT's symmetry between human and nonhuman actors developed in close dialogue, each reinforcing the other's challenge to rigid nature/culture boundaries.",
+    confidence: 'likely',
+  },
+  {
+    id: 'r114',
+    sourceId: 'co-production',
+    targetId: 'daston-galison-objectivity',
+    type: 'supported',
+    summary:
+      "Jasanoff's co-production idiom and Daston and Galison's historicised account of objectivity developed as mutually reinforcing ways of showing that scientific standards and social order are made together.",
+    confidence: 'likely',
+  },
 ]

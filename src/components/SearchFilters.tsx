@@ -54,6 +54,12 @@ const RELATIONSHIP_TYPE_OPTIONS: RelationshipType[] = [
   'extracted',
   'institutionalised',
   'independently-developed',
+  'commercialised',
+  'regulated',
+  'co-produced',
+  'represented',
+  'materially-enabled',
+  'contested',
 ]
 
 function toggle(list: string[], value: string): string[] {
