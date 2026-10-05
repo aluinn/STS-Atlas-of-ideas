@@ -80,47 +80,40 @@ interface RidgePeak {
   h: number
 }
 
-// A tightly packed sawtooth skyline — many small, uneven peaks sharing a
-// continuous base — rather than a few isolated triangles. This is the
-// silhouette antique pen-and-ink maps use for a mountain *range*: one
-// unbroken jagged ridge, not separate stickers.
+// A simple, regular zigzag — the plain line-symbol cartographers use for
+// "mountains" on a legend, not a filled icon. Near-even heights with only
+// slight variation, so it reads as a calm repeated hand-drawn mark rather
+// than a jagged skyline.
 const RIDGE_PEAKS: RidgePeak[] = [
-  { dx: -22, h: 9 },
-  { dx: -16, h: 16 },
-  { dx: -10, h: 11 },
-  { dx: -4, h: 18 },
-  { dx: 2, h: 12 },
-  { dx: 9, h: 17 },
-  { dx: 15, h: 10 },
-  { dx: 21, h: 14 },
+  { dx: -20, h: 10 },
+  { dx: -12, h: 13 },
+  { dx: -4, h: 10 },
+  { dx: 4, h: 13 },
+  { dx: 12, h: 10 },
+  { dx: 20, h: 12 },
 ]
 
-/** Builds one continuous jagged ridge silhouette from a row of peaks,
- * dipping to a shallow valley (not all the way to the baseline) between
- * each pair so the range reads as connected rather than as separate tents. */
+/** Builds a single open zigzag stroke (not a closed, filled silhouette)
+ * through the peaks — a sketched line, in keeping with the thin-ink style
+ * used for coastlines and routes elsewhere on the chart. */
 function buildRidgePath(peaks: RidgePeak[]): string {
-  let d = `M${peaks[0].dx - 4},0 L${peaks[0].dx},${-peaks[0].h}`
-  for (let i = 1; i < peaks.length; i++) {
-    const prev = peaks[i - 1]
-    const cur = peaks[i]
-    const valleyX = (prev.dx + cur.dx) / 2
-    const valleyH = Math.min(prev.h, cur.h) * 0.3
-    d += ` L${valleyX},${-valleyH} L${cur.dx},${-cur.h}`
+  let d = `M${peaks[0].dx - 5},0`
+  for (const p of peaks) {
+    d += ` L${p.dx},${-p.h}`
+    d += ` L${p.dx + 4},0`
   }
-  const last = peaks[peaks.length - 1]
-  d += ` L${last.dx + 4},0 Z`
   return d
 }
 
 const RIDGE_PATH = buildRidgePath(RIDGE_PEAKS)
 
-/** A dense, unbroken mountain ridge: solid dark ink, sawtooth peaks of
- * uneven height, run through the same hand-wobble filter as the coastline
- * so it reads as pen-drawn relief rather than a clip-art icon. */
+/** A light, open zigzag stroke — the plain cartographic line-mark for a
+ * mountain range, not a filled icon — run through the same hand-wobble
+ * filter as the coastline so it reads as a quick pen sketch. */
 export function MountainGlyph({ x, y, scale = 1, rotation = 0 }: GlyphProps) {
   return (
     <g transform={`translate(${x},${y}) rotate(${rotation}) scale(${scale})`}>
-      <path d={RIDGE_PATH} className={styles.mountainGlyph} filter="url(#inkWobble)" />
+      <path d={RIDGE_PATH} className={styles.mountainGlyph} filter="url(#inkWobble)" fill="none" />
     </g>
   )
 }
