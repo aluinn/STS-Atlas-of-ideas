@@ -18,14 +18,31 @@
   cursor: grabbing;
 }
 
-/* A soft darkened edge, like a well-handled paper chart. Painted once as a
-   fixed overlay, independent of pan/zoom. */
+/* A heavy darkened edge and a handful of irregular age-stain blotches,
+   like a well-handled, foxed old paper chart. Painted once as a fixed
+   overlay, independent of pan/zoom. */
 .vignette {
   position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 2;
-  box-shadow: inset 0 0 90px 10px rgba(80, 58, 22, 0.35);
+  box-shadow: inset 0 0 160px 30px rgba(35, 24, 8, 0.65);
+}
+
+.ageStains {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: multiply;
+  opacity: 0.55;
+  background-image:
+    radial-gradient(ellipse 22% 16% at 12% 20%, var(--chart-stain), transparent 70%),
+    radial-gradient(ellipse 18% 24% at 88% 15%, var(--chart-stain), transparent 70%),
+    radial-gradient(ellipse 26% 18% at 80% 85%, var(--chart-stain), transparent 70%),
+    radial-gradient(ellipse 20% 22% at 8% 82%, var(--chart-stain), transparent 70%),
+    radial-gradient(ellipse 30% 20% at 50% 95%, var(--chart-stain), transparent 70%),
+    radial-gradient(ellipse 16% 14% at 60% 8%, var(--chart-stain), transparent 70%);
 }
 
 .sea {

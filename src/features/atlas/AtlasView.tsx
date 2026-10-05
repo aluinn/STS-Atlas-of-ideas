@@ -230,6 +230,7 @@ export function AtlasView({
   return (
     <div className={styles.wrap} ref={wrapRef}>
       {!showList && <div className={styles.vignette} aria-hidden />}
+      {!showList && <div className={styles.ageStains} aria-hidden />}
       {!showList && <CompassRose />}
       {!showList ? (
         <svg

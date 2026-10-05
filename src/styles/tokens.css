@@ -96,20 +96,21 @@
   have to be recoloured per theme to stay legible against it.
 */
 :root {
-  --chart-paper: #e8d9ae;
-  --chart-paper-deep: #dcc68e;
-  --chart-paper-edge: #b9975e;
-  --chart-ink: #2d3b52;
-  --chart-ink-soft: rgba(45, 59, 82, 0.4);
-  --chart-ink-faint: rgba(45, 59, 82, 0.22);
-  --chart-route-primary: #8a3b3f;
-  --chart-route-accent: #93702c;
-  --chart-marker-fill: #f1e3bd;
-  --chart-marker-ink: #2d3b52;
-  --chart-marker-selected: #8a3b3f;
-  --chart-cluster-fill: #8a3b3f;
-  --chart-cluster-ink: #f1e3bd;
-  --chart-label-halo: #e8d9ae;
+  --chart-paper: #cdb57f;
+  --chart-paper-deep: #b89c68;
+  --chart-paper-edge: #7d6136;
+  --chart-ink: #231c13;
+  --chart-ink-soft: rgba(35, 28, 19, 0.45);
+  --chart-ink-faint: rgba(35, 28, 19, 0.25);
+  --chart-route-primary: #732f32;
+  --chart-route-accent: #7c5a1f;
+  --chart-marker-fill: #e8d7a8;
+  --chart-marker-ink: #231c13;
+  --chart-marker-selected: #732f32;
+  --chart-cluster-fill: #732f32;
+  --chart-cluster-ink: #e8d7a8;
+  --chart-label-halo: #cdb57f;
+  --chart-stain: rgba(70, 50, 20, 0.5);
 
   /* Back-compat aliases used throughout AtlasView.module.css */
   --map-land: var(--chart-paper-deep);
