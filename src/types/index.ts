@@ -1,4 +1,4 @@
-// Core content model for the Atlas of Ideas.
+// Core content model for STS Interactive Map.
 // All historical and philosophical content is expressed through these types
 // so that rendering code never needs to know where the data ultimately comes
 // from (local files today; a CMS or database later).

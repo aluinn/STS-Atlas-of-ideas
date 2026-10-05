@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for considering a contribution to Atlas of Ideas. This is a portfolio project
+Thanks for considering a contribution to STS Interactive Map. This is a portfolio project
 first and foremost, but it's built to be genuinely extensible — the content model is the
 main thing worth protecting.
 

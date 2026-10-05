@@ -237,7 +237,7 @@ export function AtlasView({
           className={styles.svg}
           viewBox={`0 0 ${size.width} ${size.height}`}
           role="application"
-          aria-label="Interactive map of the Atlas of Ideas. Use the list view toggle for a keyboard- and screen-reader-friendly alternative."
+          aria-label="Interactive map of the STS Interactive Map atlas. Use the list view toggle for a keyboard- and screen-reader-friendly alternative."
           onClick={() => setOpenClusterId(null)}
         >
           <MapDefs />

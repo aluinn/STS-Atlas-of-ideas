@@ -38,7 +38,7 @@ export function Intro({ onEnter, reducedMotion }: IntroProps) {
 
       <div className={styles.content}>
         <p className={styles.eyebrow}>An Interactive Atlas</p>
-        <h1 className={styles.title}>Atlas of Ideas</h1>
+        <h1 className={styles.title}>STS Interactive Map</h1>
         <p className={styles.tagline}>"Knowledge has never travelled in a straight line."</p>
         <p className={styles.body}>
           Scientific knowledge has moved through translation, argument, observation, trade, empire,

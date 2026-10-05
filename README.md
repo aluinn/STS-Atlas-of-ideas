@@ -1,4 +1,4 @@
-# Atlas of Ideas
+# STS Interactive Map
 
 **A History and Philosophy of Science**
 
@@ -11,7 +11,7 @@ digital-humanities resource.
 
 ## Concept
 
-Atlas of Ideas is not a timeline of "great discoveries." It is an attempt to map the
+STS Interactive Map is not a timeline of "great discoveries." It is an attempt to map the
 actual, messier shape of how scientific knowledge has moved: through translation,
 argument, observation, trade, empire, craft, experiment, exclusion, and collaboration —
 and to keep philosophy of science in the same frame as the history, rather than treating

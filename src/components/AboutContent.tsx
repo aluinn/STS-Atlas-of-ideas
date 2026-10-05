@@ -4,7 +4,7 @@ export function AboutContent() {
       style={{ display: 'grid', gap: '1rem', fontSize: '0.92rem', color: 'var(--color-ink-dim)' }}
     >
       <p>
-        <strong style={{ color: 'var(--color-ink)' }}>Atlas of Ideas</strong> is an interpretive,
+        <strong style={{ color: 'var(--color-ink)' }}>STS Interactive Map</strong> is an interpretive,
         educational project exploring the connected history and philosophy of science. It is not a
         neutral or exhaustive account: every atlas selects, every selection interprets, and every
         interpretation reflects choices its author could have made differently.

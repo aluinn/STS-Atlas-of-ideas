@@ -30,7 +30,7 @@ export function NavShell({
   return (
     <header className={styles.header}>
       <div className={styles.brand}>
-        <h1 className={styles.brandTitle}>Atlas of Ideas</h1>
+        <h1 className={styles.brandTitle}>STS Interactive Map</h1>
         <span className={styles.brandSub}>A History &amp; Philosophy of Science</span>
       </div>
 
