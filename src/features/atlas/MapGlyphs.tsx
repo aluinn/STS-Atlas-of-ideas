@@ -75,49 +75,6 @@ interface GlyphProps {
   rotation?: number
 }
 
-interface RidgePeak {
-  dx: number
-  h: number
-}
-
-// A simple, regular zigzag — the plain line-symbol cartographers use for
-// "mountains" on a legend, not a filled icon. Near-even heights with only
-// slight variation, so it reads as a calm repeated hand-drawn mark rather
-// than a jagged skyline.
-const RIDGE_PEAKS: RidgePeak[] = [
-  { dx: -20, h: 10 },
-  { dx: -12, h: 13 },
-  { dx: -4, h: 10 },
-  { dx: 4, h: 13 },
-  { dx: 12, h: 10 },
-  { dx: 20, h: 12 },
-]
-
-/** Builds a single open zigzag stroke (not a closed, filled silhouette)
- * through the peaks — a sketched line, in keeping with the thin-ink style
- * used for coastlines and routes elsewhere on the chart. */
-function buildRidgePath(peaks: RidgePeak[]): string {
-  let d = `M${peaks[0].dx - 5},0`
-  for (const p of peaks) {
-    d += ` L${p.dx},${-p.h}`
-    d += ` L${p.dx + 4},0`
-  }
-  return d
-}
-
-const RIDGE_PATH = buildRidgePath(RIDGE_PEAKS)
-
-/** A light, open zigzag stroke — the plain cartographic line-mark for a
- * mountain range, not a filled icon — run through the same hand-wobble
- * filter as the coastline so it reads as a quick pen sketch. */
-export function MountainGlyph({ x, y, scale = 1, rotation = 0 }: GlyphProps) {
-  return (
-    <g transform={`translate(${x},${y}) rotate(${rotation}) scale(${scale})`}>
-      <path d={RIDGE_PATH} className={styles.mountainGlyph} filter="url(#inkWobble)" fill="none" />
-    </g>
-  )
-}
-
 /** A small cluster of scalloped canopy bumps, standing in for a forest. */
 export function ForestGlyph({ x, y, scale = 1, rotation = 0 }: GlyphProps) {
   return (
