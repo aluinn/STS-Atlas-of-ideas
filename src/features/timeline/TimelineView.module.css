@@ -1,0 +1,122 @@
+.wrap {
+  height: 100%;
+  overflow-y: auto;
+  padding: var(--space-4);
+}
+
+.jumpNav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: var(--space-5);
+  position: sticky;
+  top: 0;
+  background: var(--color-bg);
+  padding: var(--space-2) 0;
+  z-index: 2;
+}
+.jumpLink {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-elevated);
+  color: var(--color-ink-dim);
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 0.72rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.section {
+  margin-bottom: var(--space-8);
+  scroll-margin-top: 48px;
+}
+.sectionHeader {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-2);
+}
+.sectionTitle {
+  margin: 0;
+  font-size: 1.3rem;
+}
+.sectionRange {
+  color: var(--color-ink-faint);
+  font-size: 0.82rem;
+}
+
+.spine {
+  position: relative;
+  display: flex;
+  gap: var(--space-4);
+  overflow-x: auto;
+  padding: var(--space-3) var(--space-1) var(--space-5);
+}
+.spine::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 46px;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--color-border-strong) 4%,
+    var(--color-border-strong) 96%,
+    transparent
+  );
+}
+
+.card {
+  position: relative;
+  flex: 0 0 220px;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  cursor: pointer;
+  text-align: left;
+  color: var(--color-ink);
+  font: inherit;
+}
+.card:hover {
+  border-color: var(--color-gold);
+}
+.cardDate {
+  font-size: 0.72rem;
+  color: var(--color-gold-bright);
+  margin-bottom: 4px;
+}
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  margin: 0 0 4px;
+}
+.cardSummary {
+  font-size: 0.78rem;
+  color: var(--color-ink-dim);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.dot {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  border: 2px solid var(--color-bg);
+}
+
+.empty {
+  color: var(--color-ink-faint);
+  padding: var(--space-6);
+  text-align: center;
+}

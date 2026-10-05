@@ -1,0 +1,128 @@
+/*
+  Design tokens for the Atlas of Ideas.
+  Dark ink-on-parchment is the default theme; [data-theme="light"] gives a
+  high-contrast "day" reading mode. Colours are tuned for antique-atlas mood
+  without sacrificing WCAG-conscious contrast for body text.
+*/
+
+:root {
+  --font-display: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+  --font-body: 'EB Garamond', 'IM Fell English', Georgia, serif;
+  --font-ui: 'EB Garamond', Georgia, serif;
+
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 12px;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+
+  --shadow-soft: 0 6px 24px rgba(0, 0, 0, 0.35);
+  --shadow-inset: inset 0 0 40px rgba(0, 0, 0, 0.25);
+
+  --duration-fast: 120ms;
+  --duration-base: 220ms;
+  --duration-slow: 600ms;
+  --ease-atlas: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --focus-ring: 0 0 0 3px var(--color-focus);
+}
+
+/* ---- Dark ink-on-parchment (default) ---- */
+:root,
+:root[data-theme='dark'] {
+  --color-bg: #15110c;
+  --color-bg-elevated: #1d1711;
+  --color-parchment: #2a2117;
+  --color-parchment-elevated: #352a1c;
+  --color-ink: #e9ddc4;
+  --color-ink-dim: #b8a989;
+  --color-ink-faint: #8a7a5c;
+  --color-border: #4a3c28;
+  --color-border-strong: #6b5739;
+
+  --color-gold: #c9a24b;
+  --color-gold-bright: #e0bd6e;
+  --color-burgundy: #8a3b3f;
+  --color-burgundy-bright: #b05459;
+  --color-oxidised-green: #5c7a63;
+  --color-oxidised-green-bright: #7a9c81;
+  --color-charcoal: #2c2824;
+
+  --color-focus: #e0bd6e;
+  --color-link: #cdb173;
+
+  --overlay-scrim: rgba(10, 8, 5, 0.72);
+  --paper-grain-opacity: 0.08;
+}
+
+/* ---- High-contrast light "day" mode ---- */
+:root[data-theme='light'] {
+  --color-bg: #f3ebd8;
+  --color-bg-elevated: #faf4e6;
+  --color-parchment: #ece1c6;
+  --color-parchment-elevated: #f6eed9;
+  --color-ink: #241c10;
+  --color-ink-dim: #4a3c28;
+  --color-ink-faint: #6b5739;
+  --color-border: #c9b793;
+  --color-border-strong: #a68e60;
+
+  --color-gold: #8a6322;
+  --color-gold-bright: #6f4e16;
+  --color-burgundy: #7a2328;
+  --color-burgundy-bright: #5e1a1e;
+  --color-oxidised-green: #3f5c48;
+  --color-oxidised-green-bright: #2f4636;
+  --color-charcoal: #241c10;
+
+  --color-focus: #6f4e16;
+  --color-link: #6f4e16;
+
+  --overlay-scrim: rgba(243, 235, 216, 0.85);
+  --paper-grain-opacity: 0.1;
+}
+
+/*
+  The Atlas chart itself — unlike the app chrome — always renders as a
+  single fixed "antique paper" palette, independent of dark/light reading
+  mode. A physical old map doesn't invert when you read it under a lamp;
+  keeping its ink and paper tones constant also means markers/routes never
+  have to be recoloured per theme to stay legible against it.
+*/
+:root {
+  --chart-paper: #e8d9ae;
+  --chart-paper-deep: #dcc68e;
+  --chart-paper-edge: #b9975e;
+  --chart-ink: #2d3b52;
+  --chart-ink-soft: rgba(45, 59, 82, 0.4);
+  --chart-ink-faint: rgba(45, 59, 82, 0.22);
+  --chart-route-primary: #8a3b3f;
+  --chart-route-accent: #93702c;
+  --chart-marker-fill: #f1e3bd;
+  --chart-marker-ink: #2d3b52;
+  --chart-marker-selected: #8a3b3f;
+  --chart-cluster-fill: #8a3b3f;
+  --chart-cluster-ink: #f1e3bd;
+  --chart-label-halo: #e8d9ae;
+
+  /* Back-compat aliases used throughout AtlasView.module.css */
+  --map-land: var(--chart-paper-deep);
+  --map-land-border: var(--chart-ink);
+  --map-sea: var(--chart-paper);
+  --map-sea-pattern: var(--chart-paper-deep);
+  --map-label: var(--chart-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+    --duration-slow: 0ms;
+  }
+}

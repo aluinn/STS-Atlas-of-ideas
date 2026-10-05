@@ -1,0 +1,93 @@
+.panel {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  display: grid;
+  gap: var(--space-3);
+}
+
+.searchInput {
+  width: 100%;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--color-ink);
+  padding: var(--space-2) var(--space-3);
+  font: inherit;
+}
+
+.group {
+  display: grid;
+  gap: 4px;
+}
+.groupLabel {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-ink-faint);
+}
+.chipRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.chip {
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-bg);
+  color: var(--color-ink-dim);
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+.chipActive {
+  background: var(--color-gold);
+  color: var(--color-charcoal);
+  border-color: var(--color-gold);
+}
+
+.toggleRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: var(--color-ink-dim);
+  cursor: pointer;
+}
+
+.yearRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.yearInput {
+  width: 90px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--color-ink);
+  padding: 4px 6px;
+  font: inherit;
+  font-size: 0.82rem;
+}
+
+.resetBtn {
+  justify-self: start;
+  border: 1px solid var(--color-burgundy);
+  background: transparent;
+  color: var(--color-burgundy-bright);
+  border-radius: var(--radius-sm);
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.resetBtn:hover {
+  background: var(--color-burgundy);
+  color: var(--color-ink);
+}
+
+.resultCount {
+  font-size: 0.78rem;
+  color: var(--color-ink-faint);
+}

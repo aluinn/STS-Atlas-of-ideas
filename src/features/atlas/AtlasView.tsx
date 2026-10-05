@@ -1,0 +1,538 @@
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { select } from 'd3-selection'
+import 'd3-transition'
+import { zoom as d3zoom, zoomIdentity, type D3ZoomEvent, type ZoomBehavior } from 'd3-zoom'
+import { feature } from 'topojson-client'
+import landTopology from 'world-atlas/land-110m.json'
+import type { Entry, Relationship } from '../../types'
+import {
+  createProjection,
+  projectEntries,
+  clusterProjected,
+  geoPath,
+  type MarkerCluster,
+} from '../../utils/geo'
+import { MarkerIcon } from '../../components/MarkerIcon'
+import { MapDefs, ForestGlyph, CompassRose } from './MapGlyphs'
+import { forestRegions } from '../../utils/mapDecorations'
+import styles from './AtlasView.module.css'
+
+interface AtlasViewProps {
+  entries: Entry[]
+  relationships: Relationship[]
+  selectedEntryId: string | null
+  onSelectEntry: (id: string) => void
+  focusEntryId?: string | null
+  focusToken?: number
+  reducedMotion: boolean
+  onEntriesWithoutLocation?: (entries: Entry[]) => void
+}
+
+interface RouteTooltip {
+  relationship: Relationship
+  x: number
+  y: number
+}
+
+interface GlyphPoint {
+  x: number
+  y: number
+  scale?: number
+  rotation?: number
+}
+
+const BROKEN_TYPES = new Set(['replaced', 'criticised'])
+
+export function AtlasView({
+  entries,
+  relationships,
+  selectedEntryId,
+  onSelectEntry,
+  focusEntryId,
+  focusToken,
+  reducedMotion,
+  onEntriesWithoutLocation,
+}: AtlasViewProps) {
+  const wrapRef = useRef<HTMLDivElement>(null)
+  const svgRef = useRef<SVGSVGElement>(null)
+  const zoomBehaviorRef = useRef<ZoomBehavior<SVGSVGElement, unknown> | null>(null)
+
+  const [size, setSize] = useState({ width: 800, height: 520 })
+  const [transform, setTransform] = useState({ x: 0, y: 0, k: 1 })
+  const [hoveredId, setHoveredId] = useState<string | null>(null)
+  const [openClusterId, setOpenClusterId] = useState<string | null>(null)
+  const [routeTooltip, setRouteTooltip] = useState<RouteTooltip | null>(null)
+  const [showList, setShowList] = useState(false)
+  const [measured, setMeasured] = useState(false)
+
+  useEffect(() => {
+    const el = wrapRef.current
+    if (!el) return
+    const ro = new ResizeObserver((entriesList) => {
+      const rect = entriesList[0]?.contentRect
+      if (rect && rect.width > 0 && rect.height > 0) {
+        setSize({ width: rect.width, height: rect.height })
+        setMeasured(true)
+      }
+    })
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [])
+
+  const landFeature = useMemo(
+    () =>
+      feature(
+        landTopology as never,
+        (landTopology as never as { objects: { land: never } }).objects.land,
+      ),
+    [],
+  )
+
+  const projection = useMemo(
+    () => createProjection(size.width, size.height, landFeature as never),
+    [size.width, size.height, landFeature],
+  )
+  const pathGenerator = useMemo(() => geoPath(projection), [projection])
+  const landPath = useMemo(
+    () => pathGenerator(landFeature as never) ?? '',
+    [pathGenerator, landFeature],
+  )
+
+  const forestPoints = useMemo(() => {
+    const out: GlyphPoint[] = []
+    for (const f of forestRegions) {
+      const p = projection([f.longitude, f.latitude])
+      if (p) out.push({ x: p[0], y: p[1], scale: f.scale, rotation: f.rotation })
+    }
+    return out
+  }, [projection])
+
+  const projected = useMemo(() => projectEntries(entries, projection), [entries, projection])
+  const noCoordEntries = useMemo(
+    () => entries.filter((e) => e.latitude === undefined || e.longitude === undefined),
+    [entries],
+  )
+  useEffect(() => {
+    onEntriesWithoutLocation?.(noCoordEntries)
+  }, [noCoordEntries, onEntriesWithoutLocation])
+
+  const clusters = useMemo(
+    () => clusterProjected(projected, transform.k, 20),
+    [projected, transform.k],
+  )
+
+  useEffect(() => {
+    const svgEl = svgRef.current
+    if (!svgEl) return
+    const zb = d3zoom<SVGSVGElement, unknown>()
+      .scaleExtent([0.9, 10])
+      .on('zoom', (event: D3ZoomEvent<SVGSVGElement, unknown>) => {
+        setTransform({ x: event.transform.x, y: event.transform.y, k: event.transform.k })
+      })
+    zoomBehaviorRef.current = zb
+    select(svgEl).call(zb)
+    return () => {
+      select(svgEl).on('.zoom', null)
+    }
+  }, [])
+
+  const applyZoom = useCallback(
+    (k: number, cx?: number, cy?: number) => {
+      if (!svgRef.current || !zoomBehaviorRef.current) return
+      const sel = select(svgRef.current)
+      // Anchor on the world point explicitly passed (e.g. an entry/cluster
+      // position), or, if none is given, on whatever world point is
+      // currently under the viewport centre — so +/- zoom in place instead
+      // of drifting toward the SVG origin.
+      const worldX = cx ?? (size.width / 2 - transform.x) / transform.k
+      const worldY = cy ?? (size.height / 2 - transform.y) / transform.k
+      const target = zoomIdentity
+        .translate(size.width / 2 - worldX * k, size.height / 2 - worldY * k)
+        .scale(k)
+      if (reducedMotion) {
+        zoomBehaviorRef.current.transform(sel, target)
+      } else {
+        sel.transition().duration(650).call(zoomBehaviorRef.current.transform, target)
+      }
+    },
+    [size.width, size.height, transform.x, transform.y, transform.k, reducedMotion],
+  )
+
+  const resetView = useCallback(() => {
+    if (!svgRef.current || !zoomBehaviorRef.current) return
+    const sel = select(svgRef.current)
+    if (reducedMotion) {
+      zoomBehaviorRef.current.transform(sel, zoomIdentity)
+    } else {
+      sel.transition().duration(650).call(zoomBehaviorRef.current.transform, zoomIdentity)
+    }
+  }, [reducedMotion])
+
+  useEffect(() => {
+    if (!focusEntryId || !measured) return
+    const p = projected.find((pr) => pr.entry.id === focusEntryId)
+    if (p) applyZoom(3, p.x, p.y)
+    // Intentionally excludes `projected`/`applyZoom`: re-centering should
+    // only be triggered by an explicit focus request (new entry/journey
+    // stop) or the container becoming measured, not by every filter change.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [focusEntryId, focusToken, measured])
+
+  const visibleEntryIds = useMemo(() => new Set(entries.map((e) => e.id)), [entries])
+  const projectedById = useMemo(() => {
+    const m = new Map<string, { x: number; y: number }>()
+    for (const p of projected) m.set(p.entry.id, p)
+    return m
+  }, [projected])
+
+  const routeCurves = useMemo(() => {
+    return relationships
+      .filter((r) => visibleEntryIds.has(r.sourceId) && visibleEntryIds.has(r.targetId))
+      .map((r) => {
+        const a = projectedById.get(r.sourceId)
+        const b = projectedById.get(r.targetId)
+        if (!a || !b) return null
+        const mx = (a.x + b.x) / 2
+        const my = (a.y + b.y) / 2
+        const dx = b.x - a.x
+        const dy = b.y - a.y
+        const curveOffset = Math.hypot(dx, dy) * 0.18
+        const cx = mx - dy * (curveOffset / (Math.hypot(dx, dy) || 1))
+        const cy = my + dx * (curveOffset / (Math.hypot(dx, dy) || 1))
+        return { rel: r, d: `M${a.x},${a.y} Q${cx},${cy} ${b.x},${b.y}`, midX: cx, midY: cy }
+      })
+      .filter((x): x is NonNullable<typeof x> => x !== null)
+  }, [relationships, visibleEntryIds, projectedById])
+
+  const openCluster = clusters.find((c) => c.id === openClusterId) ?? null
+
+  function handleClusterClick(cluster: MarkerCluster) {
+    const spread = Math.hypot(
+      Math.max(...cluster.items.map((i) => i.x)) - Math.min(...cluster.items.map((i) => i.x)),
+      Math.max(...cluster.items.map((i) => i.y)) - Math.min(...cluster.items.map((i) => i.y)),
+    )
+    if (spread < 1 || transform.k >= 7) {
+      setOpenClusterId(cluster.id)
+    } else {
+      applyZoom(Math.min(transform.k * 2.4, 8), cluster.x, cluster.y)
+    }
+  }
+
+  return (
+    <div className={styles.wrap} ref={wrapRef}>
+      {!showList && <div className={styles.vignette} aria-hidden />}
+      {!showList && <CompassRose />}
+      {!showList ? (
+        <svg
+          ref={svgRef}
+          className={styles.svg}
+          viewBox={`0 0 ${size.width} ${size.height}`}
+          role="application"
+          aria-label="Interactive map of the Atlas of Ideas. Use the list view toggle for a keyboard- and screen-reader-friendly alternative."
+          onClick={() => setOpenClusterId(null)}
+        >
+          <MapDefs />
+          <g transform={`translate(${transform.x},${transform.y}) scale(${transform.k})`}>
+            <rect
+              x={-size.width}
+              y={-size.height}
+              width={size.width * 3}
+              height={size.height * 3}
+              className={styles.sea}
+            />
+            <rect
+              x={-size.width}
+              y={-size.height}
+              width={size.width * 3}
+              height={size.height * 3}
+              className={styles.seaTexture}
+            />
+            <path className={styles.land} d={landPath} />
+            {forestPoints.map((f, i) => (
+              <ForestGlyph
+                key={`forest-${i}`}
+                x={f.x}
+                y={f.y}
+                scale={f.scale}
+                rotation={f.rotation}
+              />
+            ))}
+            {routeCurves.map(({ rel, d, midX, midY }) => {
+              const dimmed = hoveredId && rel.sourceId !== hoveredId && rel.targetId !== hoveredId
+              return (
+                <path
+                  key={rel.id}
+                  d={d}
+                  className={`${styles.route} ${BROKEN_TYPES.has(rel.type) ? styles.routeBroken : ''} ${dimmed ? styles.routeDimmed : ''}`}
+                  style={{ strokeWidth: 1.1 / Math.sqrt(transform.k) }}
+                  tabIndex={0}
+                  role="button"
+                  aria-label={`${rel.type} relationship: ${rel.summary}`}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setRouteTooltip({ relationship: rel, x: midX, y: midY })
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault()
+                      setRouteTooltip({ relationship: rel, x: midX, y: midY })
+                    }
+                  }}
+                />
+              )
+            })}
+
+            {clusters.map((cluster) => {
+              if (cluster.items.length === 1) {
+                const { entry, x, y } = cluster.items[0]
+                const selected = entry.id === selectedEntryId
+                const dimmed = hoveredId !== null && hoveredId !== entry.id
+                const r = 9 / Math.sqrt(transform.k)
+                return (
+                  <g
+                    key={entry.id}
+                    transform={`translate(${x},${y})`}
+                    className={`${styles.marker} ${selected ? styles.markerSelected : ''} ${dimmed ? styles.markerDimmed : ''}`}
+                    tabIndex={0}
+                    role="button"
+                    aria-label={`${entry.title}, ${entry.dateDisplay}. ${entry.kind}.`}
+                    onMouseEnter={() => setHoveredId(entry.id)}
+                    onMouseLeave={() => setHoveredId(null)}
+                    onFocus={() => setHoveredId(entry.id)}
+                    onBlur={() => setHoveredId(null)}
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      onSelectEntry(entry.id)
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault()
+                        onSelectEntry(entry.id)
+                      }
+                    }}
+                  >
+                    <circle className={styles.pulse} r={r} />
+                    <circle className={styles.markerDot} r={r} />
+                    <g
+                      className={styles.markerIcon}
+                      transform={`translate(${-r * 0.6},${-r * 0.6}) scale(${(r * 1.2) / 14})`}
+                    >
+                      <MarkerIcon kind={entry.kind} size={14} />
+                    </g>
+                    {(transform.k > 2.2 || hoveredId === entry.id || selected) && (
+                      <g transform={`scale(${1 / transform.k})`}>
+                        <text className={styles.markerLabel} x={r * transform.k + 6} y={4}>
+                          {entry.title}
+                        </text>
+                      </g>
+                    )}
+                  </g>
+                )
+              }
+              const r = Math.min(10 + cluster.items.length * 1.3, 22) / Math.sqrt(transform.k)
+              return (
+                <g
+                  key={cluster.id}
+                  transform={`translate(${cluster.x},${cluster.y})`}
+                  className={styles.cluster}
+                  tabIndex={0}
+                  role="button"
+                  aria-label={`Cluster of ${cluster.items.length} entries. Activate to expand.`}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    handleClusterClick(cluster)
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault()
+                      handleClusterClick(cluster)
+                    }
+                  }}
+                >
+                  <circle className={styles.clusterDot} r={r} />
+                  <g transform={`scale(${1 / transform.k})`}>
+                    <text className={styles.clusterCount}>{cluster.items.length}</text>
+                  </g>
+                </g>
+              )
+            })}
+          </g>
+        </svg>
+      ) : (
+        <EntryListFallback
+          entries={entries}
+          onSelectEntry={onSelectEntry}
+          selectedEntryId={selectedEntryId}
+        />
+      )}
+
+      <div className={styles.controls}>
+        <button
+          type="button"
+          className={styles.zoomBtn}
+          aria-label="Zoom in"
+          onClick={() => applyZoom(Math.min(transform.k * 1.5, 10))}
+        >
+          +
+        </button>
+        <button
+          type="button"
+          className={styles.zoomBtn}
+          aria-label="Zoom out"
+          onClick={() => applyZoom(Math.max(transform.k / 1.5, 0.9))}
+        >
+          −
+        </button>
+        <button
+          type="button"
+          className={styles.zoomBtn}
+          aria-label="Reset view"
+          onClick={resetView}
+        >
+          ⟲
+        </button>
+        <button
+          type="button"
+          className={styles.zoomBtn}
+          aria-pressed={showList}
+          aria-label={showList ? 'Switch to map view' : 'Switch to accessible list view'}
+          onClick={() => setShowList((s) => !s)}
+        >
+          ☰
+        </button>
+      </div>
+
+      {!showList && (
+        <p className={styles.borderNote}>
+          Borders shown are modern coastlines for orientation only — political boundaries shifted
+          constantly across the periods this atlas covers.
+        </p>
+      )}
+
+      {openCluster && (
+        <div
+          className={styles.tooltip}
+          style={{
+            left: Math.min(openCluster.x + transform.x, size.width - 280),
+            top: Math.max(openCluster.y + transform.y - 10, 10),
+          }}
+          role="dialog"
+          aria-label="Entries at this location"
+        >
+          <strong>{openCluster.items.length} entries here</strong>
+          <ul style={{ listStyle: 'none', margin: 0, padding: 0, pointerEvents: 'auto' }}>
+            {openCluster.items.map(({ entry }) => (
+              <li key={entry.id}>
+                <button
+                  type="button"
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    color: 'var(--color-link)',
+                    cursor: 'pointer',
+                    padding: '2px 0',
+                    textAlign: 'left',
+                    font: 'inherit',
+                  }}
+                  onClick={() => {
+                    onSelectEntry(entry.id)
+                    setOpenClusterId(null)
+                  }}
+                >
+                  {entry.title}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {routeTooltip && (
+        <div
+          className={styles.tooltip}
+          style={{
+            left: Math.min(
+              Math.max(routeTooltip.x * transform.k + transform.x - 120, 10),
+              size.width - 280,
+            ),
+            top: Math.max(routeTooltip.y * transform.k + transform.y - 70, 10),
+            pointerEvents: 'auto',
+          }}
+          role="dialog"
+          aria-label="Relationship detail"
+        >
+          <strong style={{ textTransform: 'capitalize' }}>
+            {routeTooltip.relationship.type.replace('-', ' ')}
+          </strong>
+          <p style={{ margin: '0 0 6px' }}>{routeTooltip.relationship.summary}</p>
+          <p style={{ margin: 0, fontSize: '0.75rem', color: 'var(--color-ink-faint)' }}>
+            Confidence: {routeTooltip.relationship.confidence}
+          </p>
+          <button
+            type="button"
+            style={{
+              marginTop: 6,
+              background: 'none',
+              border: '1px solid var(--color-border-strong)',
+              borderRadius: 4,
+              color: 'var(--color-ink)',
+              cursor: 'pointer',
+            }}
+            onClick={() => setRouteTooltip(null)}
+          >
+            Close
+          </button>
+        </div>
+      )}
+    </div>
+  )
+}
+
+function EntryListFallback({
+  entries,
+  onSelectEntry,
+  selectedEntryId,
+}: {
+  entries: Entry[]
+  onSelectEntry: (id: string) => void
+  selectedEntryId: string | null
+}) {
+  return (
+    <div style={{ height: '100%', overflow: 'auto', padding: 'var(--space-4)' }}>
+      <h3 style={{ marginTop: 0 }}>Entries ({entries.length})</h3>
+      <ul
+        style={{ listStyle: 'none', margin: 0, padding: 0, display: 'grid', gap: 'var(--space-2)' }}
+      >
+        {entries.map((entry) => (
+          <li key={entry.id}>
+            <button
+              type="button"
+              aria-current={entry.id === selectedEntryId}
+              onClick={() => onSelectEntry(entry.id)}
+              style={{
+                width: '100%',
+                textAlign: 'left',
+                background:
+                  entry.id === selectedEntryId
+                    ? 'var(--color-parchment-elevated)'
+                    : 'var(--color-bg-elevated)',
+                border: '1px solid var(--color-border)',
+                borderRadius: 'var(--radius-md)',
+                padding: 'var(--space-3)',
+                color: 'var(--color-ink)',
+                cursor: 'pointer',
+                font: 'inherit',
+              }}
+            >
+              <strong style={{ fontFamily: 'var(--font-display)' }}>{entry.title}</strong>
+              <div style={{ fontSize: '0.8rem', color: 'var(--color-ink-dim)' }}>
+                {entry.kind} · {entry.dateDisplay}
+                {entry.places[0] ? ` · ${entry.places[0].name}` : ''}
+              </div>
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}

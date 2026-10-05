@@ -1,0 +1,119 @@
+@import './tokens.css';
+
+@font-face {
+  font-family: 'EB Garamond';
+  src: local('EB Garamond');
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+}
+:root[data-theme='light'] html,
+html:has(:root[data-theme='light']) {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle paper grain, generated purely with CSS gradients (no network asset). */
+.paper-grain {
+  position: relative;
+}
+.paper-grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: var(--paper-grain-opacity);
+  background-image:
+    radial-gradient(circle at 20% 30%, #fff 0.5px, transparent 0.5px),
+    radial-gradient(circle at 60% 70%, #fff 0.5px, transparent 0.5px),
+    radial-gradient(circle at 85% 15%, #000 0.5px, transparent 0.5px),
+    radial-gradient(circle at 40% 85%, #000 0.5px, transparent 0.5px);
+  background-size:
+    7px 7px,
+    11px 11px,
+    13px 13px,
+    9px 9px;
+  mix-blend-mode: overlay;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--color-ink);
+}
+
+a {
+  color: var(--color-link);
+}
+
+button {
+  font-family: var(--font-ui);
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--radius-sm);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  z-index: 200;
+  background: var(--color-gold);
+  color: var(--color-charcoal);
+  padding: var(--space-2) var(--space-4);
+  border-radius: 0 0 var(--radius-md) 0;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-charcoal);
+}
+
+/* Scrollbars that don't clash with the parchment palette (WebKit/Blink only, progressive) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border-radius: 10px;
+}
