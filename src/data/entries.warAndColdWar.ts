@@ -336,4 +336,58 @@ export const warAndColdWarEntries: Entry[] = [
     contentStatus: 'complete',
     isJourneyStop: true,
   },
+  {
+    id: 'lysenkoism-soviet-genetics',
+    slug: 'lysenkoism-soviet-genetics',
+    title: 'Lysenkoism and Soviet Genetics',
+    subtitle: 'Science conducted under political control',
+    kind: 'event',
+    period: 'cold-war',
+    summary:
+      "Trofim Lysenko's rejection of Mendelian genetics, backed by Soviet state power, became official biological doctrine from 1948, suppressing rival research and persecuting geneticists who disagreed.",
+    longDescription:
+      "Lysenko promoted a Lamarckian-influenced theory of heredity that he presented as more compatible with Marxist ideology than Mendelian genetics, and secured Stalin's backing to have it declared the only correct biology at a 1948 session of the Lenin All-Union Academy of Agricultural Sciences. Geneticists who defended Mendelian inheritance were dismissed, imprisoned, or in some cases died in custody — the botanist Nikolai Vavilov, a prominent critic, died in a Soviet prison in 1943. Lysenkoism dominated Soviet biology and agricultural policy into the 1960s, with serious costs to both scientific research and agricultural planning, before losing official support after Khrushchev's removal in 1964.",
+    startYear: 1927,
+    endYear: 1964,
+    dateDisplay: '1927–1964 (official doctrine from 1948)',
+    approximateDate: false,
+    latitude: 55.7558,
+    longitude: 37.6173,
+    places: [{ name: 'Moscow', latitude: 55.7558, longitude: 37.6173 }],
+    transregional: false,
+    people: ['trofim-lysenko', 'nikolai-vavilov'],
+    cultures: ['Soviet'],
+    disciplines: ['genetics', 'agricultural science'],
+    themes: ['ethics', 'profession-and-identity', 'institutions-and-funding'],
+    philosophicalQuestions: [
+      {
+        prompt:
+          'When a state enforces a scientific doctrine by force, does that make it political ideology wearing the label of science, or can it still count as "science" if it is widely practised under that name?',
+        debateId: 'what-makes-a-scientist',
+      },
+      {
+        prompt:
+          "Lysenkoism directly violated Merton's universalism and organised scepticism — does a case this stark show those norms are indispensable, or simply that norms alone cannot protect science from political power?",
+        debateId: 'ethics-in-science',
+      },
+    ],
+    historicalSignificance:
+      'One of the starkest documented cases of a state imposing scientific doctrine by political force, widely used in the history and sociology of science to examine what happens when institutional norms of open criticism are deliberately overridden.',
+    commonMyth:
+      'That Lysenkoism was simply bad science that failed to persuade anyone and was quickly abandoned.',
+    historicalComplication:
+      'Lysenkoism was official Soviet doctrine for roughly two decades, actively enforced through dismissal and imprisonment of dissenting scientists, and caused serious real-world harm to Soviet agricultural planning — it was not merely an obscure fringe theory.',
+    sources: [
+      { author: 'David Joravsky', title: 'The Lysenko Affair', year: '1970', type: 'secondary' },
+      {
+        author: 'Loren R. Graham',
+        title: 'Science in Russia and the Soviet Union: A Short History',
+        year: '1993',
+        type: 'secondary',
+      },
+    ],
+    relatedEntryIds: ['merton-norms', 'gieryn-boundary-work', 'cold-war-big-science'],
+    confidence: 'established',
+    contentStatus: 'complete',
+  },
 ]

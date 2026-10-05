@@ -697,4 +697,67 @@ export const relationships: Relationship[] = [
       "Vesalius's insistence on direct dissection over textual authority anticipated the experiential, witness-based evidential culture the Royal Society later formalised.",
     confidence: 'likely',
   },
+  {
+    id: 'r78',
+    sourceId: 'professionalisation-of-science',
+    targetId: 'natural-philosophy',
+    type: 'replaced',
+    summary:
+      'Specialised, paid, professional science gradually displaced the older unified category of natural philosophy over the nineteenth century.',
+    confidence: 'established',
+  },
+  {
+    id: 'r79',
+    sourceId: 'royal-society',
+    targetId: 'natural-philosophy',
+    type: 'institutionalised',
+    summary:
+      "The Royal Society's founding charter and early culture institutionalised natural philosophy as a collective, experimental pursuit.",
+    confidence: 'established',
+  },
+  {
+    id: 'r80',
+    sourceId: 'whewell',
+    targetId: 'professionalisation-of-science',
+    type: 'influenced',
+    summary:
+      'Whewell\'s coining of "scientist" and his writing on the inductive sciences helped articulate and legitimate the emerging professional identity.',
+    confidence: 'likely',
+  },
+  {
+    id: 'r81',
+    sourceId: 'merton-norms',
+    targetId: 'lysenkoism-soviet-genetics',
+    type: 'challenged',
+    summary:
+      'Lysenkoism is frequently cited in sociology of science as a case where political pressure overrode the universalism and organised scepticism Merton described as core scientific norms.',
+    confidence: 'likely',
+  },
+  {
+    id: 'r82',
+    sourceId: 'gieryn-boundary-work',
+    targetId: 'lysenkoism-soviet-genetics',
+    type: 'supported',
+    summary:
+      "Historians and sociologists of science have used Gieryn's boundary-work framework to analyse how Lysenkoism redrew the boundary of legitimate Soviet biology for political ends.",
+    confidence: 'likely',
+  },
+  {
+    id: 'r83',
+    sourceId: 'daston-galison-objectivity',
+    targetId: 'galileo-telescope',
+    type: 'supported',
+    summary:
+      "Daston and Galison's account of historically varying standards of objectivity helps explain why Galileo's telescopic images needed active argument before they counted as evidence.",
+    confidence: 'likely',
+  },
+  {
+    id: 'r84',
+    sourceId: 'royal-society',
+    targetId: 'scientific-societies',
+    type: 'influenced',
+    summary:
+      "The Royal Society's early model of collective, published, peer-witnessed research influenced the wider wave of scientific societies founded across Europe afterward.",
+    confidence: 'likely',
+  },
 ]

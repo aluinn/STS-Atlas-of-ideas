@@ -29,6 +29,11 @@ export const modernEntries: Entry[] = [
         prompt:
           'Does the coining of a new professional label ("scientist") change what counts as science, or just how we talk about it?',
       },
+      {
+        prompt:
+          'If the historian\'s answer to "what makes someone a scientist?" is a professional identity that solidified around her but never quite fit her, was Somerville a scientist?',
+        debateId: 'what-makes-a-scientist',
+      },
     ],
     historicalSignificance:
       'Her career is directly tied to the emergence of "scientist" as an English word, making her central to the history of how scientific identity and professional boundaries were drawn.',
@@ -40,7 +45,7 @@ export const modernEntries: Entry[] = [
         type: 'secondary',
       },
     ],
-    relatedEntryIds: ['whewell', 'word-scientist', 'laplace'],
+    relatedEntryIds: ['whewell', 'word-scientist', 'laplace', 'natural-philosophy'],
     confidence: 'established',
     contentStatus: 'complete',
     isJourneyStop: true,
@@ -74,6 +79,11 @@ export const modernEntries: Entry[] = [
           'Is scientific discovery a matter of mechanically collecting facts, or does it require actively supplying new concepts that facts alone could never generate?',
         debateId: 'induction-problem',
       },
+      {
+        prompt:
+          'Whewell named "the scientist" and argued for the active, conceptual side of discovery — does defining a professional identity and defining a method come from the same impulse, or two different ones?',
+        debateId: 'what-makes-a-scientist',
+      },
     ],
     historicalSignificance:
       'One of the first systematic historian-philosophers of science, and the namer of the modern "scientist."',
@@ -86,7 +96,7 @@ export const modernEntries: Entry[] = [
         type: 'secondary',
       },
     ],
-    relatedEntryIds: ['mary-somerville', 'word-scientist'],
+    relatedEntryIds: ['mary-somerville', 'word-scientist', 'natural-philosophy'],
     confidence: 'established',
     contentStatus: 'complete',
   },
@@ -115,10 +125,15 @@ export const modernEntries: Entry[] = [
       {
         prompt:
           'Did "scientists" exist before the word did, or did the word help create a new kind of social role?',
+        debateId: 'what-makes-a-scientist',
       },
     ],
     historicalSignificance:
       'Marks the transition from "natural philosophy" as a broad, often amateur pursuit toward a specialised, increasingly professional identity.',
+    commonMyth:
+      'That the word "scientist" caught on immediately and simply replaced "natural philosopher" overnight.',
+    historicalComplication:
+      'Whewell\'s coinage was initially contested and sometimes mocked as an ugly Americanism; "natural philosopher" and "man of science" both remained in common use for decades afterward, and the older and newer identities overlapped rather than cleanly succeeding one another.',
     sources: [
       {
         author: 'Sydney Ross',
@@ -127,7 +142,123 @@ export const modernEntries: Entry[] = [
         type: 'secondary',
       },
     ],
-    relatedEntryIds: ['whewell', 'mary-somerville', 'darwin'],
+    relatedEntryIds: [
+      'whewell',
+      'mary-somerville',
+      'darwin',
+      'natural-philosophy',
+      'professionalisation-of-science',
+    ],
+    confidence: 'established',
+    contentStatus: 'complete',
+  },
+  {
+    id: 'natural-philosophy',
+    slug: 'natural-philosophy',
+    title: 'Natural Philosophy',
+    subtitle: 'Studying nature as a single interconnected whole',
+    kind: 'idea',
+    period: 'professional-science',
+    summary:
+      'For centuries before "scientist" existed, investigators of nature were called natural philosophers, pursuing an interconnected study of the physical world that often carried an explicit theological dimension.',
+    longDescription:
+      'Natural philosophy treated questions we would now split across physics, chemistry, biology, and theology as parts of one unified inquiry into the order and purpose of creation. It was typically practised by university-trained men, clergy, and independently wealthy gentlemen rather than salaried specialists, and it supplied the conceptual vocabulary — "forces," "laws of nature," "causes" — that later, more fragmented scientific disciplines inherited. The gradual nineteenth-century fragmentation of natural philosophy into separate, professionalised fields (chemistry, geology, physics, biology) is itself a major historical event, not a simple continuation of the same enterprise under new management.',
+    startYear: 1200,
+    endYear: 1850,
+    dateDisplay: 'c. 1200–1850 CE',
+    approximateDate: true,
+    transregional: true,
+    places: [
+      { name: 'Oxford', latitude: 51.752, longitude: -1.2577 },
+      { name: 'Cambridge', latitude: 52.2043, longitude: 0.1218 },
+    ],
+    people: [],
+    cultures: ['European'],
+    disciplines: ['natural philosophy', 'theology'],
+    themes: ['profession-and-identity', 'method'],
+    philosophicalQuestions: [
+      {
+        prompt:
+          'If natural philosophy treated nature, causation, and theology as one connected field of study, does splitting it into separate specialised sciences lose something, or is specialisation simply progress?',
+        debateId: 'what-makes-a-scientist',
+      },
+    ],
+    historicalSignificance:
+      'Natural philosophy is the direct ancestor category of modern science, and understanding its theological and holistic character is essential to avoiding anachronism when reading pre-nineteenth-century investigators as "scientists" in the modern sense.',
+    commonMyth:
+      'That medieval and early modern "natural philosophers" were simply scientists who lacked modern equipment.',
+    historicalComplication:
+      "Natural philosophy's explicit theological dimension, and its lack of disciplinary boundaries, made it a genuinely different kind of enterprise from modern specialised science, not merely an under-resourced version of it.",
+    sources: [
+      {
+        author: 'Peter Dear',
+        title: 'Revolutionizing the Sciences: European Knowledge and Its Ambitions, 1500–1700',
+        year: '2001',
+        type: 'secondary',
+      },
+    ],
+    relatedEntryIds: [
+      'aristotle',
+      'scholasticism',
+      'word-scientist',
+      'professionalisation-of-science',
+    ],
+    confidence: 'established',
+    contentStatus: 'complete',
+  },
+  {
+    id: 'professionalisation-of-science',
+    slug: 'professionalisation-of-science',
+    title: 'The Professionalisation of Science',
+    subtitle: 'From gentlemanly pursuit to salaried career',
+    kind: 'idea',
+    period: 'professional-science',
+    summary:
+      'Over the nineteenth century, the study of nature gradually changed from a pastime associated with wealthy gentlemen and aristocratic patrons into a paid occupation with training, examinations, specialised societies, and career paths.',
+    longDescription:
+      'Professionalisation involved more than a change of vocabulary: it meant new university posts and degree programmes, government and industrial funding, specialised journals and conferences, and societies organised around single disciplines (chemistry, geology, physics) rather than natural knowledge as a whole. This process was uneven and contested — it advanced at different speeds in different countries and fields, and it actively excluded many people, especially women and those without independent wealth, who had previously been able to participate as amateurs or patrons even without formal credentials.',
+    startYear: 1800,
+    endYear: 1900,
+    dateDisplay: '19th century',
+    approximateDate: true,
+    transregional: true,
+    places: [
+      { name: 'London', latitude: 51.5072, longitude: -0.1276 },
+      { name: 'Cambridge', latitude: 52.2043, longitude: 0.1218 },
+    ],
+    people: ['whewell', 'huxley'],
+    cultures: ['English', 'European'],
+    disciplines: ['history of science'],
+    themes: ['profession-and-identity', 'exclusion-and-access', 'institutions-and-funding'],
+    philosophicalQuestions: [
+      {
+        prompt:
+          'Does turning the study of nature into a paid career change what counts as good scientific work, or just who is allowed to do it?',
+        debateId: 'what-makes-a-scientist',
+      },
+    ],
+    historicalSignificance:
+      'Created the institutional and economic structure — salaried posts, peer-reviewed journals, disciplinary societies, credentialing — that still largely defines what it means to "be a scientist" today.',
+    commonMyth:
+      'That professionalisation was a smooth, inevitable process of simply replacing amateurs with trained experts.',
+    historicalComplication:
+      'The same process that created paid scientific careers also erected new gatekeeping barriers — degree requirements, society memberships, examination systems — that were often unavailable to women and the less wealthy, even when they had already been doing serious scientific work as amateurs.',
+    sources: [
+      {
+        author: 'Jack Morrell',
+        title:
+          'Gentlemen of Science: Early Years of the British Association for the Advancement of Science',
+        year: '1981',
+        type: 'secondary',
+      },
+    ],
+    relatedEntryIds: [
+      'whewell',
+      'word-scientist',
+      'natural-philosophy',
+      'huxley',
+      'mary-somerville',
+    ],
     confidence: 'established',
     contentStatus: 'complete',
   },

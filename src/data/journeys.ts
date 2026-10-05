@@ -483,4 +483,46 @@ export const journeys: Journey[] = [
       },
     ],
   },
+  {
+    id: 'who-gets-to-be-a-scientist',
+    slug: 'who-gets-to-be-a-scientist',
+    title: 'Who Gets to Be a Scientist?',
+    summary:
+      "Three answers to one question — a philosopher's method, a historian's professional identity, and a sociologist's community norms — traced through the people and institutions that shaped them.",
+    themes: ['profession-and-identity', 'method', 'demarcation'],
+    stops: [
+      {
+        entryId: 'natural-philosophy',
+        caption: 'Before "scientist" existed, investigators of nature were natural philosophers.',
+      },
+      {
+        entryId: 'mary-somerville',
+        caption: 'A synthesiser of physical science whose work prompted a new professional label.',
+      },
+      {
+        entryId: 'word-scientist',
+        caption: 'Whewell names a role that older vocabulary could no longer capture.',
+      },
+      {
+        entryId: 'professionalisation-of-science',
+        caption:
+          'Paid posts, training, and societies turn a pursuit into a profession — unevenly, and not for everyone.',
+      },
+      {
+        entryId: 'scientific-societies',
+        caption:
+          'Specialised institutions take over the work of organising and certifying knowledge.',
+      },
+      {
+        entryId: 'merton-norms',
+        caption:
+          'A sociologist proposes the shared ethos that is supposed to hold the community together.',
+      },
+      {
+        entryId: 'gieryn-boundary-work',
+        caption:
+          'And another shows that the boundary of "science" is drawn strategically, not just discovered.',
+      },
+    ],
+  },
 ]

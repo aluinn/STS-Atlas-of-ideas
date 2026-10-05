@@ -70,11 +70,16 @@ export const renaissanceEntries: Entry[] = [
     people: ['vesalius'],
     cultures: ['Flemish', 'Italian'],
     disciplines: ['anatomy', 'medicine'],
-    themes: ['observation', 'overturning-authority'],
+    themes: ['observation', 'overturning-authority', 'scientific-images'],
     philosophicalQuestions: [
       {
         prompt:
           'When direct observation conflicts with a long-trusted authority, how much observational evidence should it take to overturn that authority?',
+      },
+      {
+        prompt:
+          'De humani corporis fabrica\'s woodcut illustrations idealised and composed their "typical" bodies for clarity — does that selection and idealisation make them less trustworthy as evidence, or is some idealisation necessary for an image to teach anatomy at all?',
+        debateId: 'scientific-images-objectivity',
       },
     ],
     historicalSignificance:
@@ -87,7 +92,7 @@ export const renaissanceEntries: Entry[] = [
         type: 'secondary',
       },
     ],
-    relatedEntryIds: ['leonardo-da-vinci', 'galileo'],
+    relatedEntryIds: ['leonardo-da-vinci', 'galileo', 'daston-galison-objectivity'],
     confidence: 'established',
     contentStatus: 'complete',
   },
@@ -360,6 +365,11 @@ export const renaissanceEntries: Entry[] = [
           'What would it take to convince a skeptic that a new instrument reveals truth rather than artefacts of the device itself?',
         debateId: 'entity-realism-hacking',
       },
+      {
+        prompt:
+          "Galileo's telescopic drawings of the Moon were themselves selective, framed, and interpreted images, not raw data — when does an enhanced or carefully drawn image count as clarifying evidence, and when might it mislead?",
+        debateId: 'scientific-images-objectivity',
+      },
     ],
     historicalSignificance:
       'A case study in the "experimenter\'s regress": establishing that an instrument works reliably, and that its outputs are not mere artefacts, is itself a contested achievement.',
@@ -371,7 +381,7 @@ export const renaissanceEntries: Entry[] = [
         type: 'secondary',
       },
     ],
-    relatedEntryIds: ['galileo', 'ibn-al-haytham'],
+    relatedEntryIds: ['galileo', 'ibn-al-haytham', 'daston-galison-objectivity'],
     confidence: 'established',
     contentStatus: 'complete',
   },
@@ -459,7 +469,7 @@ export const renaissanceEntries: Entry[] = [
         type: 'secondary',
       },
     ],
-    relatedEntryIds: ['boyle', 'newton'],
+    relatedEntryIds: ['boyle', 'newton', 'natural-philosophy', 'scientific-societies'],
     confidence: 'established',
     contentStatus: 'complete',
   },

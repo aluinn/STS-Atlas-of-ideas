@@ -115,6 +115,11 @@ export const environmentalAndStudiesEntries: Entry[] = [
           'If real scientific practice regularly violates an idealised ethos, does that mean the ethos is wrong, or that practice is falling short of a worthwhile standard?',
         debateId: 'objectivity-values',
       },
+      {
+        prompt:
+          "Disputes over scientific priority and secrecy put Merton's norms in tension with each other: withholding results before publication can be condemned as secrecy, yet defended as protecting credit or ensuring results are checked before release. Which norm should win?",
+        debateId: 'what-makes-a-scientist',
+      },
     ],
     historicalSignificance:
       'A foundational text for the sociology of science and for later debates about scientific norms, credit, and institutional trust.',
@@ -157,6 +162,11 @@ export const environmentalAndStudiesEntries: Entry[] = [
           'If the line between science and non-science shifts depending on who is defending their turf, can there still be a principled philosophical answer to the demarcation problem?',
         debateId: 'demarcation-boundary-work',
       },
+      {
+        prompt:
+          'Labels like "science" confer authority, funding, and public trust — so who should have the power to decide where the boundary of legitimate science falls, and for what purposes?',
+        debateId: 'what-makes-a-scientist',
+      },
     ],
     historicalSignificance:
       'A key bridge between sociology of science and philosophical debates about demarcation.',
@@ -168,7 +178,7 @@ export const environmentalAndStudiesEntries: Entry[] = [
         type: 'secondary',
       },
     ],
-    relatedEntryIds: ['merton-norms', 'karl-popper'],
+    relatedEntryIds: ['merton-norms', 'karl-popper', 'lysenkoism-soviet-genetics'],
     confidence: 'established',
     contentStatus: 'complete',
   },
@@ -199,11 +209,16 @@ export const environmentalAndStudiesEntries: Entry[] = [
           'Are scientific images and visualisations neutral records of evidence, or are they always, to some degree, constructed representations?',
         debateId: 'objectivity-values',
       },
+      {
+        prompt:
+          'If what counted as a properly "objective" image changed from idealised type specimens, to raw mechanical reproduction, to trained expert judgement, is there still a single thing called scientific objectivity?',
+        debateId: 'scientific-images-objectivity',
+      },
     ],
     historicalSignificance:
       'One of the most influential recent works reshaping how historians and philosophers think about scientific objectivity as a historically variable practice, not a fixed ideal.',
     sources: [{ author: 'Lorraine Daston', title: 'Objectivity', year: '2007', type: 'secondary' }],
-    relatedEntryIds: ['merton-norms', 'feminist-epistemology-idea'],
+    relatedEntryIds: ['merton-norms', 'feminist-epistemology-idea', 'galileo-telescope'],
     confidence: 'established',
     contentStatus: 'complete',
   },
@@ -217,7 +232,7 @@ export const environmentalAndStudiesEntries: Entry[] = [
     summary:
       'Feminist philosophers of science, including Sandra Harding, Donna Haraway, and Lorraine Code, argued that knowers are always socially situated, and that acknowledging this can improve rather than undermine scientific objectivity.',
     longDescription:
-      'Rather than rejecting objectivity, thinkers like Harding proposed "strong objectivity," arguing that making a researcher\'s social position and assumptions explicit, and including previously excluded standpoints, produces more rigorous, less parochial knowledge than a view that pretends to come from nowhere. This tradition also documented concrete historical cases — including biased primate-behaviour and reproductive-biology research shaped by unexamined gender assumptions — where ignoring standpoint produced worse science.',
+      'Rather than rejecting objectivity, thinkers like Harding proposed "strong objectivity," arguing that making a researcher\'s social position and assumptions explicit, and including previously excluded standpoints, produces more rigorous, less parochial knowledge than a view that pretends to come from nowhere. Lorraine Code specifically challenged the traditional philosophical picture of an abstract, interchangeable, "featureless" knower — anyone, anywhere, reasoning from nowhere in particular. Code argued that knowers are always embodied and socially situated, and that this position shapes which questions get asked, which evidence gets noticed, and whose testimony gets trusted as credible. This tradition also documented concrete historical cases — including biased primate-behaviour and reproductive-biology research shaped by unexamined gender assumptions — where ignoring standpoint produced worse science.',
     startYear: 1986,
     endYear: 1991,
     dateDisplay: '1986–1991',
@@ -255,5 +270,54 @@ export const environmentalAndStudiesEntries: Entry[] = [
     confidence: 'established',
     contentStatus: 'complete',
     isJourneyStop: true,
+  },
+  {
+    id: 'ai-academic-knowledge',
+    slug: 'ai-academic-knowledge',
+    title: 'Generative AI and Academic Knowledge',
+    subtitle: 'Authorship, accountability, and accuracy in machine-assisted research',
+    kind: 'idea',
+    period: 'environmental-contemporary',
+    summary:
+      'The rapid adoption of large language models in research and writing has reopened long-standing questions about authorship, accountability, and evidence in a new, pressing form: who is responsible for a claim partly produced by a machine?',
+    longDescription:
+      'Generative AI systems can accelerate drafting, summarising, and literature review, but they can also produce fluent, confident, and entirely fabricated citations, and they are trained on data that embeds the biases and gaps of its sources. Their environmental cost and the often-invisible human labour involved in training and moderating them (data labelling, content moderation) rarely appear in the finished output. Unequal access to the most capable tools also raises the same old question of who gets to participate in knowledge production, in a new guise. None of this is entirely new: concerns about hidden labour, biased evidence, and contested authorship recur throughout the history of science. What is new is the scale, speed, and fluency with which an AI system can generate plausible-looking but unverified claims — which is why responsibility for checking and standing behind a claim is widely argued to remain with the named human author, whatever tools they used.',
+    startYear: 2020,
+    dateDisplay: '2020s–present',
+    approximateDate: true,
+    transregional: true,
+    places: [],
+    people: [],
+    cultures: ['transnational'],
+    disciplines: ['science policy', 'philosophy of science'],
+    themes: ['ethics', 'profession-and-identity', 'objectivity', 'exclusion-and-access'],
+    philosophicalQuestions: [
+      {
+        prompt:
+          'If an AI system drafts a claim or a citation, who is accountable when it turns out to be wrong — the tool, the company that built it, or the person who submitted it under their own name?',
+        debateId: 'ethics-in-science',
+      },
+      {
+        prompt:
+          'Is using AI assistance a difference in degree from using a calculator, a spell-checker, or a research assistant — or a difference in kind?',
+        debateId: 'discovery-invention-progress',
+      },
+    ],
+    historicalSignificance:
+      'A live, still-unsettled case that puts long-standing questions about authorship, hidden labour, evidence, and professional accountability under new and significant pressure.',
+    commonMyth: 'That these are entirely new problems with no historical precedent.',
+    historicalComplication:
+      'Questions about uncredited labour (assistants, technicians, data workers), contested authorship, and trust in machine-produced evidence have close historical parallels — but the scale and fluency of generative AI, and the specific problem of confidently fabricated references, are genuinely new complications.',
+    sources: [
+      {
+        author: 'Emily M. Bender, Timnit Gebru, Angelina McMillan-Major, Shmargaret Shmitchell',
+        title: 'On the Dangers of Stochastic Parrots: Can Language Models Be Too Big?',
+        year: '2021',
+        type: 'primary',
+      },
+    ],
+    relatedEntryIds: ['feminist-epistemology-idea', 'merton-norms'],
+    confidence: 'established',
+    contentStatus: 'complete',
   },
 ]

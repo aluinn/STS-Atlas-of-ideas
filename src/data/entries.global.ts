@@ -173,7 +173,53 @@ export const globalEntries: Entry[] = [
         type: 'secondary',
       },
     ],
-    relatedEntryIds: ['lomonosov'],
+    relatedEntryIds: ['lomonosov', 'scientific-societies'],
+    confidence: 'established',
+    contentStatus: 'complete',
+  },
+  {
+    id: 'scientific-societies',
+    slug: 'scientific-societies',
+    title: 'The Rise of Scientific Societies',
+    subtitle: 'Specialised institutions for producing and certifying knowledge',
+    kind: 'institution',
+    period: 'enlightenment',
+    summary:
+      'Between the seventeenth and nineteenth centuries, dedicated societies and academies — the Royal Society, the Paris Academy of Sciences, the St Petersburg Academy, and later many single-discipline bodies — became the central institutions organising, funding, and certifying scientific work.',
+    longDescription:
+      'Unlike medieval universities, built around teaching an inherited curriculum, scientific societies were organised around producing new knowledge: running experiments, corresponding across borders, publishing journals, and awarding credibility through membership and peer review. Early societies were broad, covering all natural knowledge; the nineteenth century saw a proliferation of narrower, discipline-specific societies (geological, chemical, astronomical) that paralleled and reinforced the professionalisation and specialisation of science more broadly.',
+    startYear: 1660,
+    endYear: 1850,
+    dateDisplay: 'c. 1660–1850 CE',
+    approximateDate: true,
+    transregional: true,
+    places: [
+      { name: 'London', latitude: 51.5072, longitude: -0.1276 },
+      { name: 'Paris', latitude: 48.8566, longitude: 2.3522 },
+      { name: 'St Petersburg', latitude: 59.9311, longitude: 30.3609 },
+    ],
+    people: [],
+    cultures: ['European'],
+    disciplines: ['institutions-and-funding'],
+    themes: ['institutions-and-funding', 'profession-and-identity'],
+    philosophicalQuestions: [
+      {
+        prompt:
+          "When a society's members decide what counts as a properly conducted experiment or a credible result, are they discovering a standard or inventing one?",
+        debateId: 'what-makes-a-scientist',
+      },
+    ],
+    historicalSignificance:
+      'Scientific societies created the lasting institutional machinery — peer review, membership, published proceedings — through which claims are still certified as scientifically credible today.',
+    sources: [
+      {
+        author: 'James E. McClellan III',
+        title: 'Science Reorganized: Scientific Societies in the Eighteenth Century',
+        year: '1985',
+        type: 'secondary',
+      },
+    ],
+    relatedEntryIds: ['royal-society', 'petersburg-academy', 'professionalisation-of-science'],
     confidence: 'established',
     contentStatus: 'complete',
   },
@@ -290,12 +336,23 @@ export const globalEntries: Entry[] = [
     people: ['maria-sibylla-merian'],
     cultures: ['German', 'Dutch'],
     disciplines: ['natural history', 'illustration'],
-    themes: ['exclusion-and-access', 'gender', 'empire-and-trade', 'craft-and-instruments'],
+    themes: [
+      'exclusion-and-access',
+      'gender',
+      'empire-and-trade',
+      'craft-and-instruments',
+      'scientific-images',
+    ],
     philosophicalQuestions: [
       {
         prompt:
           "When a naturalist's findings depend on unnamed local and enslaved informants' knowledge, who is the actual discoverer?",
         debateId: 'discovery-invention-progress',
+      },
+      {
+        prompt:
+          'Merian composed her plates to show a plant and insect together at their most instructive stage, not as she necessarily observed them in a single moment — does careful artistic composition clarify scientific evidence, or quietly misrepresent it?',
+        debateId: 'scientific-images-objectivity',
       },
     ],
     historicalSignificance:

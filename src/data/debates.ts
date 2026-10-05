@@ -612,9 +612,9 @@ export const debates: Debate[] = [
     slug: 'expertise-trust-policy',
     title: 'Expertise, Trust, and Public Policy',
     question:
-      'What should happen when qualified experts disagree, or when the public distrusts expert consensus?',
+      'What should society do when scientific experts disagree, or when the public distrusts expert consensus?',
     plainLanguageIntroduction:
-      'Modern policy constantly depends on specialised expertise that most citizens and officials cannot independently verify. This raises hard questions about how non-experts should decide whom to trust, how to recognise manufactured doubt, and how much deference expert consensus deserves.',
+      'Scientists do not stay inside laboratories. They also act as government advisers, regulators, expert witnesses, consultants, public communicators, advocates, and critics — roles that the naive picture of science (scientists discover neutral facts, governments simply apply them) does not capture well. Experts examining the very same evidence can recommend different actions, because disagreement can come from genuine uncertainty, different methods or disciplines, different background assumptions, or different judgements about which risks are acceptable. Precaution itself is a value-laden choice, not a purely factual one, and policy frequently has to act before uncertainty fully disappears. This raises hard questions about how non-experts should decide whom to trust, how to recognise manufactured doubt, and how much deference expert consensus deserves — especially when affected communities and practitioners outside formal credentialed expertise may hold relevant knowledge too.',
     positions: [
       {
         id: 'deference-to-consensus',
@@ -642,6 +642,20 @@ export const debates: Debate[] = [
           'Precaution can also be invoked to justify costly or unjustified restrictions without good evidence.',
         ],
       },
+      {
+        id: 'transparent-advice',
+        name: 'Transparent, Value-Explicit Advice',
+        statement:
+          'Expert advice should state its evidence, assumptions, and value judgements explicitly, rather than presenting conclusions as simple neutral facts — so that genuine evidential disagreement can be told apart from disagreement about values.',
+        thinkers: ['heather-douglas'],
+        argumentsFor: [
+          'Distinguishes cases where experts disagree because the evidence is genuinely unclear from cases where they agree on the evidence but weigh acceptable risk differently.',
+          'Lets affected communities and non-expert decision-makers see where a judgement call, not just a measurement, is being made.',
+        ],
+        objections: [
+          'Transparency about assumptions does not by itself resolve disagreements about which values should guide policy.',
+        ],
+      },
     ],
     thinkers: ['rachel-carson', 'naomi-oreskes', 'heather-douglas'],
     historicalCaseIds: [
@@ -651,7 +665,7 @@ export const debates: Debate[] = [
       'bengal-famine-science',
     ],
     contemporaryRelevance:
-      'Directly shapes public debate over vaccination, climate policy, and emerging technologies, where scientific consensus, public trust, and political interest frequently collide.',
+      "Directly shapes public debate over vaccination, pandemic advice, pesticide and environmental regulation, and climate policy, where scientific consensus, public trust, and political interest frequently collide — and where scientists' own roles as advisers, regulators, and advocates are themselves part of the story.",
     furtherReading: [
       { author: 'Naomi Oreskes', title: 'Merchants of Doubt', year: '2010', type: 'secondary' },
     ],
@@ -664,7 +678,7 @@ export const debates: Debate[] = [
     question:
       'Is scientific knowledge itself morally neutral, with only its applications good or bad?',
     plainLanguageIntroduction:
-      'Fritz Haber discovered how to feed billions and how to gas soldiers using closely related chemistry. Cases like his test whether we can cleanly separate "pure" scientific knowledge from the uses it enables, and what responsibility researchers bear for foreseeable misuse.',
+      'Fritz Haber discovered how to feed billions and how to gas soldiers using closely related chemistry. Cases like his test whether we can cleanly separate "pure" scientific knowledge from the uses it enables, and what responsibility researchers bear for foreseeable misuse. Ethics, in plain terms, is reasoning about how people ought to act — and different ethical frameworks give different answers here. A consequentialist (including the utilitarian tradition) judges actions by their outcomes: weighing expected benefits against expected harms. A deontologist holds that some actions are wrong regardless of good outcomes, because they violate duties or treat people merely as means to an end. Virtue ethics asks instead what a person of good character — honest, careful, humble about uncertainty — would do, rather than calculating consequences or applying a fixed rule. None of these frameworks is presented here as simply correct; comparing how each would judge the same historical case is itself informative.\n\nWorth sitting with: Can the production of knowledge really be separated from its possible uses? Does a scientist have responsibilities beyond following the law? Do good consequences justify dangerous research? Who should decide whether a risk is acceptable? And does refusing to pursue a line of research also have consequences?',
     positions: [
       {
         id: 'neutrality-thesis',
@@ -692,6 +706,47 @@ export const debates: Debate[] = [
           'Hard to specify in advance how foreseeable a consequence must be to generate responsibility.',
         ],
       },
+      {
+        id: 'consequentialist-framing',
+        name: 'Consequentialism / Utilitarianism',
+        statement:
+          'Research choices should be judged by weighing their likely benefits against their likely harms, aiming for the best overall balance of outcomes.',
+        thinkers: [],
+        argumentsFor: [
+          "Captures intuitive reasoning actually used to justify difficult choices, such as Haber's claim that more lethal weapons might shorten a war.",
+        ],
+        objections: [
+          'Consequences are often difficult to predict or weigh reliably in advance.',
+          'Can be used to justify serious harms to a few if an aggregate benefit to many is claimed.',
+        ],
+      },
+      {
+        id: 'deontological-framing',
+        name: 'Deontology',
+        statement:
+          'Some actions — developing weapons intended to kill, or experimenting on people without consent — are wrong regardless of beneficial outcomes, because they violate duties or rights.',
+        thinkers: [],
+        argumentsFor: [
+          "Protects individuals from being treated merely as means to someone else's end, even for a popular cause.",
+        ],
+        objections: [
+          'Can produce rigid conclusions that take no account of catastrophic consequences of inaction.',
+        ],
+      },
+      {
+        id: 'virtue-framing',
+        name: 'Virtue Ethics',
+        statement:
+          'Ask what a person of good character — honest, humble about uncertainty, careful of others — would do, rather than calculating consequences or applying a fixed rule.',
+        thinkers: [],
+        argumentsFor: [
+          'Matches how practising scientists often actually describe professional integrity and mentorship.',
+        ],
+        objections: [
+          'Offers less concrete guidance for genuinely novel dilemmas.',
+          'What counts as a "virtue" can itself be culturally contested.',
+        ],
+      },
     ],
     thinkers: ['heather-douglas'],
     historicalCaseIds: [
@@ -699,15 +754,23 @@ export const debates: Debate[] = [
       'haber-chemical-warfare',
       'manhattan-project',
       'congo-resource-extraction',
+      'lysenkoism-soviet-genetics',
+      'ai-academic-knowledge',
     ],
     contemporaryRelevance:
-      'Central to contemporary debates over dual-use research in biotechnology, AI, and other fields with both clear benefits and serious risks of misuse.',
+      'Central to contemporary debates over dual-use research in biotechnology and AI, medical research ethics, environmental risk, and science conducted under political pressure — fields with both clear benefits and serious risks of misuse.',
     furtherReading: [
       {
         author: 'Heather Douglas',
         title: 'Science, Policy, and the Value-Free Ideal',
         year: '2009',
         type: 'primary',
+      },
+      {
+        author: 'Michael Sandel',
+        title: "Justice: What's the Right Thing to Do?",
+        year: '2009',
+        type: 'secondary',
       },
     ],
     themes: ['ethics'],
@@ -754,6 +817,7 @@ export const debates: Debate[] = [
       'alfred-russel-wallace',
       'maria-sibylla-merian',
       'babylonian-astronomy',
+      'ai-academic-knowledge',
     ],
     contemporaryRelevance:
       'Still central to debates over authorship, patenting, and credit in large collaborative science (and now, AI-assisted research).',
@@ -766,5 +830,156 @@ export const debates: Debate[] = [
       },
     ],
     themes: ['scientific-change', 'profession-and-identity'],
+  },
+  {
+    id: 'what-makes-a-scientist',
+    slug: 'what-makes-a-scientist',
+    title: 'What Makes Someone a Scientist?',
+    question: 'What makes someone a scientist?',
+    plainLanguageIntroduction:
+      'This question can be answered in at least three different ways, which this atlas treats as complementary rather than competing. A philosopher\'s answer looks for a distinctive method: a scientist is someone who reasons in a particular way, typically by moving from observation to generalisation (induction) or by testing bold conjectures against evidence (as Popper proposed). A historian\'s answer looks for a specific, datable social identity: before the nineteenth century, investigators of nature were usually called "natural philosophers," practising a largely unpaid, often theologically inflected pursuit; the word "scientist" itself was only coined in 1834, naming a new professional role that emerged gradually through specialisation, paid posts, and disciplinary societies. A sociologist\'s answer looks for community norms and boundary-drawing: being a scientist is partly a matter of having one\'s work recognised as science by the relevant scientific community and its institutions, which actively defend the label "science" because it confers authority, funding, and public trust.',
+    positions: [
+      {
+        id: 'method-based',
+        name: "The Philosopher's Answer: A Distinctive Method",
+        statement:
+          'Science is distinguished from other pursuits by its method — moving from observation to generalisation, or systematically testing conjectures against evidence.',
+        thinkers: ['francis-bacon', 'david-hume', 'karl-popper'],
+        argumentsFor: [
+          'Offers a principled way to separate science from pseudoscience, rather than relying on social prestige.',
+          'Matches how many working scientists describe their own practice.',
+        ],
+        objections: [
+          "Hume's problem of induction: inferring that the sun will rise tomorrow because it always has before cannot be logically guaranteed, since it assumes nature will keep behaving uniformly.",
+          'No observation is ever completely neutral or theory-free, making a clean starting point for pure induction hard to locate.',
+          'Twentieth-century philosophy of science (Kuhn, Feyerabend) argued that no single method has actually governed all successful science across history.',
+        ],
+      },
+      {
+        id: 'historical-identity',
+        name: "The Historian's Answer: A Specific Professional Identity",
+        statement:
+          '"Scientist" names a historically specific role that emerged gradually in nineteenth-century Britain, replacing the older, broader category of "natural philosopher."',
+        thinkers: ['mary-somerville', 'whewell'],
+        argumentsFor: [
+          'The English word "scientist" did not exist before 1834 and was initially contested, showing the identity was actively constructed, not simply discovered.',
+          'Professionalisation — paid posts, training, examinations, societies, journals — created a recognisable modern role that natural philosophy, as a largely amateur and gentlemanly pursuit, had not required.',
+        ],
+        objections: [
+          'Risks implying earlier investigators were not "really" doing science, which is anachronistic.',
+          "The category was shaped as much by gender, class, and access to institutions as by the content of anyone's work — Mary Somerville, among the most capable natural philosophers of her generation, never fit neatly into the professional categories being built around her.",
+        ],
+      },
+      {
+        id: 'social-institutional',
+        name: "The Sociologist's Answer: Community Norms and Boundary-Work",
+        statement:
+          'Being a scientist is partly a social achievement: meeting a community\'s norms, and having one\'s work successfully recognised as "science" by scientific institutions.',
+        thinkers: ['robert-merton', 'thomas-gieryn'],
+        argumentsFor: [
+          'Merton described an institutional ethos — communalism, universalism, disinterestedness, organised scepticism — that explains why certain conduct (plagiarism, data fabrication) is treated as a betrayal of science itself, not just bad luck.',
+          "Gieryn's boundary-work shows that scientists and institutions actively, sometimes inconsistently, defend the science/non-science boundary because the label confers authority, funding, and legitimacy.",
+          'Scientific priority disputes make the tension visible: withholding results before publication can be condemned as secrecy, yet defended as protecting credit or ensuring results are checked before release.',
+        ],
+        objections: [
+          'Merton was describing an idealised ethos, not claiming scientists always live up to it — real practice regularly departs from these norms.',
+          'Defining science by what the community currently calls science risks circularity.',
+        ],
+      },
+    ],
+    thinkers: [
+      'francis-bacon',
+      'david-hume',
+      'karl-popper',
+      'mary-somerville',
+      'whewell',
+      'robert-merton',
+      'thomas-gieryn',
+    ],
+    historicalCaseIds: [
+      'mary-somerville',
+      'whewell',
+      'word-scientist',
+      'natural-philosophy',
+      'professionalisation-of-science',
+      'scientific-societies',
+      'merton-norms',
+      'gieryn-boundary-work',
+      'lysenkoism-soviet-genetics',
+    ],
+    contemporaryRelevance:
+      'Still live in disputes over who counts as a legitimate scientist today — citizen scientists, industry researchers without academic posts, and now researchers whose work is substantially AI-assisted all test where the community currently draws the line.',
+    furtherReading: [
+      {
+        author: 'Sydney Ross',
+        title: '"Scientist: The Story of a Word"',
+        year: '1962',
+        type: 'secondary',
+      },
+      {
+        author: 'Robert Merton',
+        title: 'The Sociology of Science',
+        year: '1973',
+        type: 'secondary',
+      },
+      {
+        author: 'Thomas Gieryn',
+        title: 'Cultural Boundaries of Science',
+        year: '1999',
+        type: 'secondary',
+      },
+    ],
+    themes: ['profession-and-identity', 'method', 'demarcation', 'induction'],
+  },
+  {
+    id: 'scientific-images-objectivity',
+    slug: 'scientific-images-objectivity',
+    title: 'Can We Trust What Science Shows Us?',
+    question: 'Can we trust what science shows us?',
+    plainLanguageIntroduction:
+      'Images, diagrams, models, specimens, maps, and visualisations are not simply decorative illustrations added to an already-finished theory — historians of science argue they are often central to producing scientific knowledge in the first place. From Galileo\'s telescopic drawings of a cratered, imperfect Moon to Vesalius\'s anatomical woodcuts, every scientific image involves choices: what to select, how to frame it, at what scale, in what colour, what to label, what to enhance, and what counts as a "representative" example worth showing at all. Daston and Galison\'s history of scientific objectivity shows that even the standards for a trustworthy image have changed over time — from idealised "truth-to-nature" illustrations, to "mechanical objectivity" that tried to minimise the observer\'s interpretive role (favouring photography and other automatic recording), to a later return of "trained judgement" that reintroduced expert interpretation as a virtue rather than a flaw.',
+    positions: [
+      {
+        id: 'images-as-evidence',
+        name: 'Images Can Count as Direct Evidence',
+        statement:
+          'Well-made scientific images, especially those produced through standardised, mechanical, or quantitative procedures, can function as genuine evidence rather than mere illustration.',
+        thinkers: ['galileo'],
+        argumentsFor: [
+          'Shared, reproducible imaging techniques let independent observers check the same evidence for themselves.',
+          'Historically, instruments and images have often earned trust precisely by being checked, repeated, and compared across observers.',
+        ],
+        objections: [
+          'Every image still involves selection, framing, and enhancement choices that are never fully "neutral."',
+        ],
+      },
+      {
+        id: 'images-as-constructed',
+        name: 'Images Are Always Partly Constructed',
+        statement:
+          'Scientific images are always shaped by choices about framing, scale, colour, labelling, and what counts as a "representative" example, so they must be read critically rather than taken as transparent windows onto nature.',
+        thinkers: [],
+        argumentsFor: [
+          'Historical shifts in what counted as a properly "objective" image — idealised type specimens, raw mechanical reproduction, later trained expert judgement — show that objectivity itself has a history, not a single fixed standard.',
+        ],
+        objections: [
+          'Taken too far, this risks implying all images are equally unreliable, collapsing a useful distinction between careful and careless representation.',
+        ],
+      },
+    ],
+    thinkers: ['galileo'],
+    historicalCaseIds: [
+      'galileo-telescope',
+      'vesalius',
+      'maria-sibylla-merian',
+      'daston-galison-objectivity',
+      'ibn-al-haytham',
+    ],
+    contemporaryRelevance:
+      'Medical imaging, satellite and climate-data visualisation, and AI-generated or AI-enhanced scientific images all raise the same questions about selection, enhancement, and trust in a newly pressing form.',
+    furtherReading: [
+      { author: 'Lorraine Daston', title: 'Objectivity', year: '2007', type: 'secondary' },
+    ],
+    themes: ['scientific-images', 'objectivity', 'instruments-and-method'],
   },
 ]
