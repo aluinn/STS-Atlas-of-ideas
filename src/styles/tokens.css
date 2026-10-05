@@ -110,7 +110,11 @@
   --chart-cluster-fill: #732f32;
   --chart-cluster-ink: #e8d7a8;
   --chart-label-halo: #cdb57f;
-  --chart-stain: rgba(70, 50, 20, 0.5);
+  --chart-stain: rgba(70, 50, 20, 0.35);
+  /* Deliberately lighter/softer than --chart-ink: used only for faint
+     background texture (sea ripples, land hatch) so darkening the main
+     linework doesn't also make the quiet texture shout. */
+  --chart-texture: rgba(93, 74, 42, 0.5);
 
   /* Back-compat aliases used throughout AtlasView.module.css */
   --map-land: var(--chart-paper-deep);

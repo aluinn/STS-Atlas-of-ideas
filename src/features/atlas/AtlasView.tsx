@@ -188,19 +188,32 @@ export function AtlasView({
   }, [focusEntryId, focusToken, measured])
 
   const visibleEntryIds = useMemo(() => new Set(entries.map((e) => e.id)), [entries])
-  const projectedById = useMemo(() => {
+
+  // Routes must land on whatever is actually drawn on screen — a cluster
+  // bubble's centre, not the individual (currently hidden) position of
+  // each entry inside it. Without this, dozens of curves fan out to
+  // invisible points merged inside a bubble, reading as a tangled mess
+  // rather than a connection between two visible things.
+  const screenPositionById = useMemo(() => {
     const m = new Map<string, { x: number; y: number }>()
-    for (const p of projected) m.set(p.entry.id, p)
+    for (const cluster of clusters) {
+      for (const item of cluster.items) {
+        m.set(item.entry.id, { x: cluster.x, y: cluster.y })
+      }
+    }
     return m
-  }, [projected])
+  }, [clusters])
 
   const routeCurves = useMemo(() => {
     return relationships
       .filter((r) => visibleEntryIds.has(r.sourceId) && visibleEntryIds.has(r.targetId))
       .map((r) => {
-        const a = projectedById.get(r.sourceId)
-        const b = projectedById.get(r.targetId)
+        const a = screenPositionById.get(r.sourceId)
+        const b = screenPositionById.get(r.targetId)
         if (!a || !b) return null
+        // Both endpoints collapsed into the same cluster bubble: nothing
+        // meaningful to draw.
+        if (Math.abs(a.x - b.x) < 0.01 && Math.abs(a.y - b.y) < 0.01) return null
         const mx = (a.x + b.x) / 2
         const my = (a.y + b.y) / 2
         const dx = b.x - a.x
@@ -211,7 +224,7 @@ export function AtlasView({
         return { rel: r, d: `M${a.x},${a.y} Q${cx},${cy} ${b.x},${b.y}`, midX: cx, midY: cy }
       })
       .filter((x): x is NonNullable<typeof x> => x !== null)
-  }, [relationships, visibleEntryIds, projectedById])
+  }, [relationships, visibleEntryIds, screenPositionById])
 
   const openCluster = clusters.find((c) => c.id === openClusterId) ?? null
 

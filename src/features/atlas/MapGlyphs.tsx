@@ -35,16 +35,16 @@ export function MapDefs() {
         <path
           d="M0,8 Q8.5,2 17,8 T34,8"
           fill="none"
-          stroke="var(--chart-ink)"
+          stroke="var(--chart-texture)"
           strokeWidth="0.5"
-          opacity="0.5"
+          opacity="0.4"
         />
         <path
           d="M0,13 Q8.5,8 17,13 T34,13"
           fill="none"
-          stroke="var(--chart-ink)"
+          stroke="var(--chart-texture)"
           strokeWidth="0.4"
-          opacity="0.35"
+          opacity="0.28"
         />
       </pattern>
       <pattern
@@ -59,7 +59,7 @@ export function MapDefs() {
           y1="0"
           x2="0"
           y2="7"
-          stroke="var(--chart-ink)"
+          stroke="var(--chart-texture)"
           strokeWidth="0.5"
           opacity="0.14"
         />
