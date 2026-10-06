@@ -6,8 +6,8 @@
 
 An interactive atlas exploring how scientific ideas moved between cultures, cities,
 institutions, and historical periods — and how philosophy of science helps us read that
-movement critically. Built as a portfolio project; designed to grow into a larger
-digital-humanities resource.
+movement critically. Built as a portfolio project alongside a History and Philosophy of
+Science course at UCL; designed to grow into a larger digital-humanities resource.
 
 ## Concept
 
